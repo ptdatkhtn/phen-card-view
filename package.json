@@ -1,0 +1,50 @@
+{
+  "name": "phenomenon-card",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "@craco/craco": "^6.4.3",
+    "@fortawesome/fontawesome-svg-core": "^1.2.36",
+    "@fortawesome/free-solid-svg-icons": "^5.15.4",
+    "@fortawesome/react-fontawesome": "^0.1.16",
+    "@sangre-fp/connectors": "^2.0.0-0",
+    "@sangre-fp/i18n": "^2.1.8",
+    "@sangre-fp/ui": "^2.0.26",
+    "@testing-library/jest-dom": "^5.11.4",
+    "@testing-library/react": "^11.1.0",
+    "@testing-library/user-event": "^12.1.10",
+    "clsx": "^1.1.1",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "react-responsive-carousel": "^3.2.22",
+    "react-scripts": "^4.0.3",
+    "styled-components": "^5.2.1",
+    "swr": "^1.0.1",
+    "web-vitals": "^1.0.1"
+  },
+  "scripts": {
+    "start": "sh -ac '. ./.env.dev; PORT=3009 craco start'",
+    "start-local": "sh -ac '. ./.env.local-dev; PORT=3009 craco start'",
+    "build": "sh -ac '. ./.env.deployment; craco build'",
+    "test": "craco test",
+    "eject": "craco eject",
+    "storybook": "start-storybook -p 6006 -s public",
+    "build-storybook": "build-storybook -s public"
+  },
+  "eslintConfig": {
+    "extends": [
+      "react-app",
+      "react-app/jest"
+    ]
+  },
+   "browserslist": [
+    ">0.2%",
+    "not dead",
+    "not op_mini all"
+  ],
+  "devDependencies": {
+    "autoprefixer": "9",
+    "postcss": "7",
+    "tailwindcss": "npm:@tailwindcss/postcss7-compat"
+  }
+}

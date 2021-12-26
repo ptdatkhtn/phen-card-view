@@ -1,0 +1,44 @@
+import React from 'react';
+import ReactDOM from 'react-dom';
+import './index.css';
+import App from './App';
+import { startSession } from '@sangre-fp/connectors/session'
+
+const renderApp = (
+    votingURL
+  ) => {
+    
+    const params = votingURL.split('/');
+    console.log(1111, params)
+        return (
+        <React.StrictMode>
+            <App  
+            gid={params[2]}
+            rid={params[3]}
+            pid={params[4]}   
+            />
+            
+        </React.StrictMode>
+    )
+  }
+
+startSession().then(() => {
+    const appElements = document.getElementsByClassName("phen-card-app")
+
+    const defaultRadarId = (/node=\d+/.test(document.location.href) && document.location.href.replace(/^.*node=(\d+).*$/, '$1')) || null
+
+    for (let el of appElements) {
+      console.log(222, el.hasAttribute('data-uri'))
+        ReactDOM.render(
+            renderApp(
+                el.hasAttribute('data-uri') ? el.getAttribute('data-uri') : defaultRadarId,
+            ),
+            el
+        )
+    }
+})
+
+// If you want to start measuring performance in your app, pass a function
+// to log results (for example: reportWebVitals(console.log))
+// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
+// reportWebVitals();

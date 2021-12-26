@@ -1,0 +1,59 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+html {
+    font-size: 62.5%;
+    color: #333;
+    @apply font-L10;
+}
+.container, .container-fullwidth,
+.container-fullwidth {
+    min-width: unset !important;
+    max-width: unset !important;
+
+}
+a:not([href]):not([tabindex]) {
+    color: unset;
+}
+.inlineForThumbUpComponent {
+    display: inline-block;
+}
+
+.carousel-root .carousel-slider {
+    overflow: unset !important;
+}
+
+.carousel .control-dots .dot {
+    background-color: black !important;
+}
+
+.control-dots {
+    position: absolute !important;
+    top: -36px !important;
+    z-index: 999 !important;
+    text-align: right !important;
+}
+
+.carousel-status {
+    display: none !important;
+}
+
+.carousel .slide {
+    text-align: left !important;
+    padding: 8px;
+}
+
+.carousel .slide:hover a {
+    cursor: pointer !important;
+}
+
+.carousel .slide:hover h4 {
+    text-decoration: underline;
+    cursor: pointer !important;
+}
+
+.carousel .slide:hover p {
+    text-decoration: none;
+}

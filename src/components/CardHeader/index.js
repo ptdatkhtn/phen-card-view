@@ -1,6 +1,8 @@
 import React from "react";
 import Voting from '../Voting/Voting'
+import { phenomenonColor } from "../../helpers/phenomenonColor";
 const CardHeader = ({gid, rid, pid}) => {
+  // const {iconClassName, backgroundColor} = phenomenonColor(phenomenon);
   return (
     <>
       <h1 className="mt-2 mb-12 text-h1-title font-bold">
@@ -8,7 +10,17 @@ const CardHeader = ({gid, rid, pid}) => {
       </h1>
       <div className="my-6 flex justify-between">
         <div className="flex">
-          <div className="w-6 h-6 rounded-full bg-gray-500 mt-2"></div>
+          {/* {
+             phenomenon?.['color'] === 'none' && <div className={`mt-1 icon-issue ${iconClassName}`}></div>
+          }
+          {
+            phenomenon?.['color'] !== 'none' && <div className={`mt-2 w-6 h-6 rounded-full`} style={{backgroundColor: `${backgroundColor} !important`}}></div>
+          } */}
+          
+          <div className={`mt-2 w-6 h-6 rounded-full`} style={{backgroundColor: 'red'}}></div>
+          {/* <div className={`mt-1 icon-issue summary`}></div> */}
+
+
           <p className="ml-3 text-field-text">Strengthening</p>
           <span className="mx-6 mt-2 border-l-2 border-black h-6"></span>
           <div>

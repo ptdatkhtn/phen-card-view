@@ -1,11 +1,16 @@
-import React, { useState } from "react";
+import React, { useState, useEffect, useMemo } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCommentAlt } from "@fortawesome/free-solid-svg-icons";
 import CommentsModal from "../CommentsModal";
+import {commentingApi} from '../../helpers/commentingFetcher'
+import { uuid } from 'uuidv4';
+import {capitalizeFirstLetter} from '../../helpers/utils'
 
 const Comments = ({gid, rid, pid}) => {
   const [openCommentsModal, setOpenCommentsModal] = useState(false);
   const [commentTopic, setCommentTopic] = useState('')
+  const [cmts, setCmts] = useState([])
+
   const openCommentsModalHandle = () => {
     setOpenCommentsModal(true);
   };
@@ -13,6 +18,55 @@ const Comments = ({gid, rid, pid}) => {
   const closeCommentsModalHandle = () => {
     setOpenCommentsModal(false);
   };
+  useEffect(() => {
+    const fetchCmts = async() => {
+      const cmtsRes = await commentingApi.getAllCommentsByPhenId(gid, rid, pid)
+      console.log('11', cmtsRes)
+      setCmts(cmtsRes?.data)
+    }
+    !!pid && fetchCmts()
+  }, [gid, rid, pid])
+
+  const opportunitiesCmts = useMemo(() => {
+    const a = cmts?.map((cmt) => {
+      const convert2HumunDate = (new Date(+cmt?.['updated_timestamp'] * 1000)).toString().split(' ')
+      const mm = new Date(+cmt?.['updated_timestamp'] * 1000).toLocaleDateString().split('/')[1]
+      const cmtTemp = cmt
+      cmtTemp['updated_humanTime'] = convert2HumunDate[2] + '.' + mm + '.' + convert2HumunDate[3] + ' ' + convert2HumunDate[4]
+      return cmtTemp
+    }).filter((cmt) => {
+      return cmt?.entity_uri.split('/')[6] == 'opportunities'
+    })
+    return a
+  }, [cmts])
+
+  const threatsCmts = useMemo(() => {
+    const a = cmts?.map((cmt) => {
+      const convert2HumunDate = (new Date(+cmt?.['updated_timestamp'] * 1000)).toString().split(' ')
+      const mm = new Date(+cmt?.['updated_timestamp'] * 1000).toLocaleDateString().split('/')[1]
+      const cmtTemp = cmt
+      cmtTemp['updated_humanTime'] = convert2HumunDate[2] + '.' + mm + '.' + convert2HumunDate[3] + ' ' + convert2HumunDate[4]
+      return cmtTemp
+    }).filter((cmt) => {
+      return cmt?.entity_uri.split('/')[6] == 'threats'
+    })
+    return a
+  }, [cmts])
+
+  const actionsCmts = useMemo(() => {
+    const a = cmts?.map((cmt) => {
+      const convert2HumunDate = (new Date(+cmt?.['updated_timestamp'] * 1000)).toString().split(' ')
+      const mm = new Date(+cmt?.['updated_timestamp'] * 1000).toLocaleDateString().split('/')[1]
+      const cmtTemp = cmt
+      cmtTemp['updated_humanTime'] = convert2HumunDate[2] + '.' + mm + '.' + convert2HumunDate[3] + ' ' + convert2HumunDate[4]
+      return cmtTemp
+    }).filter((cmt) => {
+      return cmt?.entity_uri.split('/')[6] == 'actions'
+    })
+    return a
+  }, [cmts])
+
+  console.log(444, actionsCmts)
   return (
     <>
       <div className="mt-8">
@@ -34,10 +88,21 @@ const Comments = ({gid, rid, pid}) => {
               Comment / View
             </p>
           </div>
-          <div className="pt-4 pb-2 px-6 text-crowdsourced">
-            <p className="font-bold">Harry 25.12.2021 20:52</p>
-            <p className="my-4 pt-1 ">This is a comment111</p>
-          </div>
+          <>
+              {
+                opportunitiesCmts && !!opportunitiesCmts.length && (
+                  <div className="pt-4 pb-2 px-6 text-crowdsourced">
+                    <p className="font-bold">
+                      {capitalizeFirstLetter(opportunitiesCmts[opportunitiesCmts?.length - 1]?.['user_name'])} 
+                        {" "} 
+                          {opportunitiesCmts[opportunitiesCmts?.length - 1]['updated_humanTime']} </p>
+                    <p className="my-4 pt-1 ">{opportunitiesCmts[opportunitiesCmts?.length - 1]?.['comment_text']}</p>
+                  </div>
+                )
+              }
+          </>
+
+
           <div className="bg-lightgray flex items-center justify-between py-5 pr-4 pl-6 border-white border-solid border-b-2 text-crowdsourced">
             <p className="text-p-desc font-bold">Threats</p>
             <p
@@ -54,10 +119,23 @@ const Comments = ({gid, rid, pid}) => {
               Comment / View
             </p>
           </div>
-          <div className="pt-4 pb-2 px-6 text-crowdsourced">
-            <p className="font-bold">Harry 25.12.2021 20:52</p>
-            <p className="my-4 pt-1 ">This is a comment111</p>
-          </div>
+
+          <>
+              {
+                threatsCmts && !!threatsCmts.length && (
+                  <div className="pt-4 pb-2 px-6 text-crowdsourced">
+                    <p className="font-bold">
+                      {capitalizeFirstLetter(threatsCmts[threatsCmts?.length - 1]?.['user_name'])} 
+                        {" "} 
+                          {threatsCmts[threatsCmts?.length - 1]['updated_humanTime']} </p>
+                    <p className="my-4 pt-1 ">{threatsCmts[threatsCmts?.length - 1]?.['comment_text']}</p>
+                  </div>
+                )
+              }
+          </>
+
+
+
           <div className="bg-lightgray flex items-center justify-between py-5 pr-4 pl-6 border-white border-solid border-b-2 text-crowdsourced">
             <p className="text-p-desc font-bold">Actions</p>
             <p
@@ -74,10 +152,20 @@ const Comments = ({gid, rid, pid}) => {
               Comment / View
             </p>
           </div>
-          <div className="pt-4 pb-2 px-6 text-crowdsourced">
-            <p className="font-bold">Harry 25.12.2021 20:52</p>
-            <p className="my-4 pt-1 ">This is a comment111</p>
-          </div>
+          <>
+              {
+                actionsCmts && !!actionsCmts.length && (
+                  <div className="pt-4 pb-2 px-6 text-crowdsourced">
+                    <p className="font-bold">
+                      {capitalizeFirstLetter(actionsCmts[actionsCmts?.length - 1]?.['user_name'])} 
+                        {" "} 
+                          {actionsCmts[actionsCmts?.length - 1]['updated_humanTime']} </p>
+                    <p className="my-4 pt-1 ">{actionsCmts[actionsCmts?.length - 1]?.['comment_text']}</p>
+                  </div>
+                )
+              }
+          </>
+
         </div>
       </div>
       <CommentsModal

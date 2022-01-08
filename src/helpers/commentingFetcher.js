@@ -3,6 +3,7 @@ import { getSessionToken, getCsrfToken} from "@sangre-fp/connectors/session"
 
 const baseUrl = process.env.REACT_APP_COMMENTING_API_URL
 async function httpRequest(baseUrl, method, path, payload = null) {
+    console.log(2222, `${baseUrl}/${path}`)
   return axios({
       method,
       url: `${baseUrl}/${path}`,
@@ -20,6 +21,11 @@ export const commentingApi = {
     //get all votes from all phenomenon by radarId
     getAllComments: async (gid, radarId) => {
         return await httpRequest(baseUrl, 'GET', `commenting/${gid}/radar/${radarId}`)
+
+    },
+
+    getAllCommentsByPhenId: async (gid, radarId, phenId) => {
+        return await httpRequest(baseUrl, 'GET', `commenting/${gid}/radar/${radarId}/phenomenon/${phenId}`)
 
     },
 

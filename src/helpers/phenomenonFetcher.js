@@ -2,12 +2,26 @@ import axios from 'axios'
 import { getSessionToken } from '@sangre-fp/connectors/session'
 
 const SEARCH_API_URL = process.env.REACT_APP_SEARCH_API_URL
-
+const RADAR_API_URL = process.env.REACT_APP_RADAR_DATA_API_URL
 /*
  Fields in document: short_name,image_url,archived,uuid,ingress_body,original_id,language,
  related_phenomena,title,group,state,visibility,video_url,media_text,description,body,feed_tag,
  media_body_text
  */
+
+ async function httpGetRequest(baseUrl,path, payload = null) {
+  return axios({
+      method: 'get',
+      url: `${baseUrl}/${path}`,
+      headers: {
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${getSessionToken()}`
+      },
+      withCredentials: true,
+      data: payload || null
+  })
+}
+
 
 async function httpPostRequest(type, payload = null) {
     return axios({
@@ -19,6 +33,10 @@ async function httpPostRequest(type, payload = null) {
         },
         data: payload
     }).then(res => res.data)
+}
+
+export async function getRadarData(rid) {
+  return httpGetRequest(RADAR_API_URL, rid)
 }
 
 // eslint-disable-next-line max-params

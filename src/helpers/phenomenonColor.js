@@ -1,6 +1,6 @@
 export const phenomenonColor = (phenomenon) => {
   let iconClassName = "";
-  let backgroundColor = "";
+  let backgroundColor = "red";
   if (String(phenomenon?.["color"]) === "none") {
     if (phenomenon?.["content-type-alias"] === "rising") {
       iconClassName = "rising";

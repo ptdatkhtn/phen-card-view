@@ -3,7 +3,7 @@ import { Carousel } from "react-responsive-carousel";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 const LatestNews = () => {
     return (
-        <div className="mt-8">
+        <div className="mt-8 mb-8">
             <h3 className="text-h3-title font-bold mb-4">Latest News</h3>
             <Carousel autoPlay infiniteLoop showArrows={false} showThumbs={false} className="bg-lightgray">
                 <a href="https://www.youtube.com/" target="_blank" rel="noreferrer" className="">

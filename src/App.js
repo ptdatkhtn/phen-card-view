@@ -16,21 +16,10 @@ const App = ({gid, rid, pid}) => {
   const [phenomenonData, setPhenomenonData] = useState(null);
   const [relatedPhenomenaIds, setRelatedPhenomenaIds] = useState(null);
   const [relatedPhenomenaData, setRelatedPhenomenaData] = useState(null);
-
   const [radarData, setRadarData] = useState(null);
   const [phenomenonTypeData, setPhenomenonTypeData] = useState(null);
-  // const checkPhenomenonType = (phenomenon, phenomenonType) => {
-  //   if(!phenomenon.type.includes('fp:doc-types')) {
-  //     return phenomenonType.filter(type => type.id === phenomenon.type)
-  //   }
-  //   else {
-  //     let checkType = phenomenonType?.filter(type => type.id === phenomenon.type)
-  //     console.log('checkType', checkType)
-  //     return checkType
-  //   }
-      
-    
-  // }
+  const [langRadar, setLangRadar] = useState('en');
+
   useEffect(() => {
     const fetchPhenomenon = async () => {
       const [phenomenon, radarData, phenomenonType] = await Promise.all(
@@ -43,6 +32,7 @@ const App = ({gid, rid, pid}) => {
       )
       
       setPhenomenonData(phenomenon.result[0].content)
+      setLangRadar(phenomenon.result[0]?.language)
       setRadarData(radarData.data.phenomena.filter(phe => phe.phenomenon_uuid === phenomenon.result[0].id))
       setPhenomenonTypeData(phenomenonType.filter(type => type.id === phenomenon.result[0].content.type))
       setRelatedPhenomenaIds(phenomenon.result[0].content.related_phenomena)
@@ -57,7 +47,7 @@ const App = ({gid, rid, pid}) => {
   
   useEffect(() => {
     const fetchRelatedPhenomena = async () => {
-      const relatedPhenomenaData = await getPhenomena({'phenomena': relatedPhenomenaIds, undefined, groups: [0, Number(gid)]})
+      const relatedPhenomenaData = await getPhenomena({'phenomena': relatedPhenomenaIds, undefined, groups: [0, Number(gid)], size: relatedPhenomenaIds.length})
       setRelatedPhenomenaData(relatedPhenomenaData.result)
     }
     try {
@@ -65,14 +55,8 @@ const App = ({gid, rid, pid}) => {
     } catch (error) {
       
     }
-  }, [relatedPhenomenaIds])
-    console.log('phenomenonData', phenomenonData)
-    console.log('relatedPhenomena', relatedPhenomenaIds)
-    console.log('relatedPhenomenaData', relatedPhenomenaData)
-
-    
-
-
+  }, [relatedPhenomenaIds, gid])
+console.log('phenomenonData', phenomenonData)
   const completedPhenomenon = React.useMemo(() => {
     let phenTemp = phenomenonData ?? {}
     phenTemp['crowdsourced'] = radarData && Number(String(radarData[0]?.time).split('.')[0])
@@ -85,15 +69,15 @@ const App = ({gid, rid, pid}) => {
 
   return (
     <div className="bg-white text-black container p-6 ">
-      <CardHeader gid={gid} rid={rid} pid={pid} phenomenon={completedPhenomenon}/>
+      <CardHeader gid={gid} rid={rid} pid={pid} phenomenon={completedPhenomenon} lang={langRadar}/>
       <YoutubeImageEmbed embedId="rokGy0huYEA" phenomenon={completedPhenomenon} />
-      <LatestNewsCarousel />
-      <Rating gid={gid} rid={rid} pid={pid}/>
-      <Comments gid={gid} rid={rid} pid={pid}/>
+      <LatestNewsCarousel lang={langRadar}/>
+      <Rating gid={gid} rid={rid} pid={pid} lang={langRadar}/>
+      <Comments gid={gid} rid={rid} pid={pid} lang={langRadar} phenomenon={completedPhenomenon}/>
       <BodyCard phenomenon={completedPhenomenon} />
       <Links />
-      <RelatedPhenomena phenomenon={completedPhenomenon}/>
-      <LatestNews />
+      <RelatedPhenomena phenomenon={completedPhenomenon} gid={gid} rid={rid} pid={pid} lang={langRadar}/>
+      <LatestNews lang={langRadar}/>
       <CardFooter />
     </div>
   )

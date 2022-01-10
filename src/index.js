@@ -9,7 +9,6 @@ const renderApp = (
   ) => {
     
     const params = votingURL.split('/');
-    console.log(1111, params)
         return (
         <React.StrictMode>
             <App  
@@ -28,7 +27,6 @@ startSession().then(() => {
     const defaultRadarId = (/node=\d+/.test(document.location.href) && document.location.href.replace(/^.*node=(\d+).*$/, '$1')) || null
 
     for (let el of appElements) {
-      console.log(222, el.hasAttribute('data-uri'))
         ReactDOM.render(
             renderApp(
                 el.hasAttribute('data-uri') ? el.getAttribute('data-uri') : defaultRadarId,

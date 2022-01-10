@@ -13,7 +13,7 @@ export const IconLink = styled.a`
   margin: auto 0;
   cursor: pointer;
   display: flex;
-  justify-content: space-between;
+  justify-content: space-evenly;
   width: 105px;
   color: #006998 !important;
 `

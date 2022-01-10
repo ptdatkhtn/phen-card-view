@@ -1,10 +1,11 @@
 import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faClock } from "@fortawesome/free-solid-svg-icons";
-const LatestNews = () => {
+import { finalTranslations } from "../../localTranslation";
+const LatestNews = ({lang}) => {
     return (
         <div className="mt-8">
-            <h2 className="text-h2-title font-bold mb-6">Latest News</h2>
+            <h2 className="text-h2-title font-bold mb-6">{lang === 'fi' ? finalTranslations?.latestNewsTitle?.fi : finalTranslations?.latestNewsTitle?.en}</h2>
             <ul className="pl-10">
                 <li className="mb-6">
                     <a

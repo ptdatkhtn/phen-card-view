@@ -1,28 +1,28 @@
-#card-body div{
+#card-body {
     @apply mt-8;
 }
 
-#card-body h2{
+#card-body h2 {
     @apply text-h2-title font-bold mb-5;
 }
 
-#card-body h3{
+#card-body h3 {
     @apply text-h3-title font-bold mb-5;
 }
 
-#card-body p{
+#card-body p {
     @apply text-body-text mb-6;
 }
 
-#card-body ul{
+#card-body ul {
     @apply list-disc pl-10;
 }
 
-#card-body li{
+#card-body li {
     @apply text-body-text mb-3;
 }
 
-#card-body li a{
+#card-body li a {
     @apply text-blue overflow-hidden break-words hover:underline;
 }
 

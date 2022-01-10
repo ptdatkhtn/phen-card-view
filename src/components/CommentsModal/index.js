@@ -1,8 +1,9 @@
 import React from "react";
 import { Modal, paddingModalStyles } from "@sangre-fp/ui";
-import { requestTranslation } from "@sangre-fp/i18n";
+import { finalTranslations } from "../../localTranslation";
 import styled, { createGlobalStyle } from "styled-components";
 import ThumbUp from "../Thumbs/ThumbUp";
+import {translateCommentSections} from '../../helpers/utils'
 import EditCommentModal from "../EditCommentModal/EditCommentModal";
 import edit2 from "./edit2.svg";
 
@@ -15,7 +16,7 @@ const GlobalStyle = createGlobalStyle`
   .ReactModal__Content__Wrapper {
     position: relative;
     // background-color: rgb(255, 255, 255);
-    background-color: #e8ebeb;
+    background-color: #e8ebeb !important;
     margin: 0 auto;
     max-width: 600px;
 
@@ -61,8 +62,10 @@ const CommentsModal = ({
   gid,
   rid,
   pid,
+  phenomenon,
+  lang
 }) => {
-
+  const {translationTitle} = translateCommentSections(commentTopic, lang)
   const [openEditCommentModal, setOpenCommentsModal] = React.useState(false);
 
   const [valueInput, setValueInput] = React.useState("");
@@ -98,11 +101,11 @@ const closeEditCommentModalHandle = () => {
         style={paddingModalStyles}
       >
         <div className="confirmation-modal-content px-16 pt-4 pb-8">
-          <h1 className="text-h1-modal-title font-bold mb-5">Ethics of AI</h1>
+          <h1 className="text-h1-modal-title font-bold mb-5">{phenomenon?.short_title}</h1>
           {/* messageModal */}
           <div className="mt-7">
-            <p className="py-5 pl-6 pr-4 border-2 bg-grayModal text-p-desc font-bold">
-              {commentTopic}
+            <p className="py-5 pl-6 pr-4 border-2 bg-grayBgTextModal text-p-desc font-bold">
+              {translationTitle}
             </p>
             {/* showChat */}
             <div className="h-chatAreaHeight max-w-chatAreaWidth">
@@ -140,7 +143,7 @@ const closeEditCommentModalHandle = () => {
                       view={"thumb_up"}
                     />
                   </div>
-                  <EditButton src={edit2} />
+                  <EditButton src={edit2} onClick={openEditCommentModalHandle}/>
                 </div>
 
                 <p className="my-4 pt-1 pb-4">This is a comment111</p>
@@ -151,14 +154,15 @@ const closeEditCommentModalHandle = () => {
           <div>
             <div className="form-group">
               <input
-                placeholder={"Name"}
+                placeholder={lang === 'fi' ? finalTranslations?.name?.fi : finalTranslations?.name?.en}
                 style={{
                   fontSize: "1.41rem",
                   color: "121212",
                   width: "100%",
                   height: "4.4rem",
-                  margin: "1.5rem 0",
-                  border: "1px solid #d5dbd",
+                  marginBottom: "0.5rem",
+                  marginTop: "2.5rem",
+                  border: "1px solid lightgray",
                   paddingLeft: "1.1rem",
                 }}
               />
@@ -169,7 +173,8 @@ const closeEditCommentModalHandle = () => {
                 className="form-control"
                 id="comment_textarea"
                 value={valueInput}
-                placeholder={"Message *"}
+                // placeholder={"Message *"}
+                placeholder={lang === 'fi' ? `${finalTranslations?.message?.fi} *` : `${finalTranslations?.message?.en} *`}
                 style={{
                   fontSize: "1.41rem",
                   color: "121212",
@@ -181,18 +186,16 @@ const closeEditCommentModalHandle = () => {
               <div className="flex justify-between">
                 <div className="">
                   <button
-                    className="btn btn-lg btn-primary"
+                    className="btn btn-lg btn-primary text-p-desc"
                     onClick={commentsModalSubmit}
                   >
-                    {/* {requestTranslation("submit").toUpperCase()} */}
-                    SUBMIT
+                    {lang === 'fi' ? finalTranslations?.submitCommentModal?.fi : finalTranslations?.submitCommentModal?.en}
                   </button>
                   <button
                     onClick={commentsModalClose}
-                    className="btn btn-lg btn-plain"
+                    className="btn btn-lg btn-plain text-p-desc"
                   >
-                    {/* {requestTranslation("cancel").toUpperCase()} */}
-                    CANCEL
+                    {lang === 'fi' ? finalTranslations?.cancel?.fi.toUpperCase() : finalTranslations?.cancel?.en.toUpperCase()}
                   </button>
                 </div>
                 <label
@@ -203,7 +206,7 @@ const closeEditCommentModalHandle = () => {
                     marginBottom: 0,
                   }}
                 >
-                  {remainingChars} characters remaining
+                  {remainingChars} {lang === 'fi' ? finalTranslations?.charactersRemainingText?.fi : finalTranslations?.charactersRemainingText?.en}
                 </label>
               </div>
             </div>

@@ -8,6 +8,7 @@ module.exports = {
       'L10': ['L10', 'ui-sans-serif']
     },
     fontSize: {
+      'h1-modal-title': '2.2rem',
       'h1-title': ['3.2rem', '1.2'],
       'field-text': '1.5rem',
       'crowdsourced': '1.2rem',
@@ -26,7 +27,8 @@ module.exports = {
         lightgray: '#e8ebeb',
         blue: '#006998',
         grayText: '#777',
-        blackText: '#000'
+        blackText: '#000',
+        grayBgTextModal: '#cbcbcb'
       },
       spacing: {
         '56.25%': '56.25%',

@@ -5,8 +5,9 @@ import CommentsModal from "../CommentsModal";
 import {commentingApi} from '../../helpers/commentingFetcher'
 import { uuid } from 'uuidv4';
 import {capitalizeFirstLetter} from '../../helpers/utils'
+import {finalTranslations} from '../../localTranslation'
 
-const Comments = ({gid, rid, pid}) => {
+const Comments = ({gid, rid, pid, lang, phenomenon}) => {
   const [openCommentsModal, setOpenCommentsModal] = useState(false);
   const [commentTopic, setCommentTopic] = useState('')
   const [cmts, setCmts] = useState([])
@@ -21,7 +22,7 @@ const Comments = ({gid, rid, pid}) => {
   useEffect(() => {
     const fetchCmts = async() => {
       const cmtsRes = await commentingApi.getAllCommentsByPhenId(gid, rid, pid)
-      console.log('11', cmtsRes)
+      console.log('11', gid, rid, pid)
       setCmts(cmtsRes?.data)
     }
     !!pid && fetchCmts()
@@ -66,14 +67,14 @@ const Comments = ({gid, rid, pid}) => {
     return a
   }, [cmts])
 
-  console.log(444, actionsCmts)
+  console.log(444, finalTranslations)
   return (
     <>
       <div className="mt-8">
-        <h3 className="text-h3-title font-bold mb-4">Comments</h3>
+        <h3 className="text-h3-title font-bold mb-4">{lang === 'fi' ? finalTranslations?.commenting?.fi : finalTranslations?.commenting?.en}</h3>
         <div>
           <div className="bg-lightgray flex items-center justify-between py-5 pr-4 pl-6 border-white border-solid border-b-2 text-crowdsourced">
-            <p className="font-bold text-p-desc">Opportunities</p>
+            <p className="font-bold text-p-desc">{lang === 'fi' ? finalTranslations?.opportunitiesCommentSection?.fi : finalTranslations?.opportunitiesCommentSection?.en}</p>
             <p
               className="text-blue font-medium cursor-pointer flex items-center"
               onClick={() => {
@@ -85,7 +86,7 @@ const Comments = ({gid, rid, pid}) => {
                 icon={faCommentAlt}
                 className="text-lead-text mr-3 mt-1"
               />
-              Comment / View
+              {lang === 'fi' ? finalTranslations?.commentViewBtn?.fi : finalTranslations?.commentViewBtn?.en}
             </p>
           </div>
           <>
@@ -104,7 +105,7 @@ const Comments = ({gid, rid, pid}) => {
 
 
           <div className="bg-lightgray flex items-center justify-between py-5 pr-4 pl-6 border-white border-solid border-b-2 text-crowdsourced">
-            <p className="text-p-desc font-bold">Threats</p>
+            <p className="text-p-desc font-bold">{lang === 'fi' ? finalTranslations?.threatsCommentSection?.fi : finalTranslations?.threatsCommentSection?.en}</p>
             <p
               className="text-blue font-medium cursor-pointer flex items-center"
               onClick={() =>{
@@ -116,7 +117,7 @@ const Comments = ({gid, rid, pid}) => {
                 icon={faCommentAlt}
                 className="text-lead-text mr-3 mt-1"
               />
-              Comment / View
+              {lang === 'fi' ? finalTranslations?.commentViewBtn?.fi : finalTranslations?.commentViewBtn?.en}
             </p>
           </div>
 
@@ -137,7 +138,7 @@ const Comments = ({gid, rid, pid}) => {
 
 
           <div className="bg-lightgray flex items-center justify-between py-5 pr-4 pl-6 border-white border-solid border-b-2 text-crowdsourced">
-            <p className="text-p-desc font-bold">Actions</p>
+            <p className="text-p-desc font-bold">{lang === 'fi' ? finalTranslations?.actionsCommentSection?.fi : finalTranslations?.actionsCommentSection?.en}</p>
             <p
               className="text-blue font-medium cursor-pointer flex items-center"
               onClick={() => {
@@ -149,7 +150,7 @@ const Comments = ({gid, rid, pid}) => {
                 icon={faCommentAlt}
                 className="text-lead-text mr-3 mt-1"
               />
-              Comment / View
+              {lang === 'fi' ? finalTranslations?.commentViewBtn?.fi : finalTranslations?.commentViewBtn?.en}
             </p>
           </div>
           <>
@@ -176,6 +177,8 @@ const Comments = ({gid, rid, pid}) => {
         gid={gid} 
         rid={rid} 
         pid={pid}
+        lang={lang}
+        phenomenon={phenomenon}
       />
     </>
   );

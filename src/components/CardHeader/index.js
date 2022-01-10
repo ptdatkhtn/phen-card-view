@@ -2,10 +2,12 @@ import React from "react";
 import { isEmpty } from "../../helpers/utils";
 import Voting from '../Voting/Voting'
 import { phenomenonColor } from "../../helpers/phenomenonColor";
+import {translatePhenomenonAlias} from "../../helpers/utils"
+import {finalTranslations} from '../../localTranslation'
 
-const CardHeader = ({gid, rid, pid, phenomenon}) => {
+const CardHeader = ({gid, rid, pid, phenomenon, lang}) => {
   const {iconClassName, backgroundColor} = phenomenonColor(phenomenon);
-
+  const {translationTitle} = translatePhenomenonAlias(phenomenon, lang);
   return (
     (phenomenon && !isEmpty(phenomenon)) ? (
     <>
@@ -20,16 +22,11 @@ const CardHeader = ({gid, rid, pid, phenomenon}) => {
           {
             phenomenon?.['color'] !== 'none' && <div className='mt-2 w-6 h-6 rounded-full' style={{backgroundColor: `${backgroundColor}`}}></div>
           }
-          
-          {/* <div className={`mt-2 w-6 h-6 rounded-full`} style={{backgroundColor: 'red'}}></div> */}
-          {/* <div className={`mt-1 icon-issue summary`}></div> */}
-
-
-          <p className="ml-3 text-field-text">{phenomenon['content-type-title']}</p>
+          <p className="ml-3 text-field-text">{translationTitle}</p>
           <span className="mx-6 mt-2 border-l-2 border-black h-6"></span>
           <div>
             {phenomenon?.time_range && <p className="text-field-text">{`${phenomenon?.time_range?.min}-${phenomenon?.time_range?.max}`}</p>}
-            {phenomenon?.crowdsourced && <p className="text-crowdsourced">Crowdsourced: {phenomenon?.crowdsourced}</p>}
+            {phenomenon?.crowdsourced && <p className="text-crowdsourced">{lang === 'fi' ? finalTranslations?.crowdSourced?.fi : finalTranslations?.crowdSourced?.en} {phenomenon?.crowdsourced}</p>}
           </div>
         </div>
 

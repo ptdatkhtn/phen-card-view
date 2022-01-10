@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { votingApi } from "../../helpers/fetcher";
 import { getRadar } from '@sangre-fp/connectors/drupal-api';
+import {finalTranslations} from '../../localTranslation'
+
 import Slider from "../Slider/Slider";
 import {
   RatingWidget,
@@ -14,7 +16,8 @@ import {
 const Rating = ({ 
   gid, 
   rid, 
-  pid
+  pid,
+  lang
 }) => {
   const [isSliding, setIsSliding] = useState(false);
   const [sliderXVal, setSliderXVal] = useState(50);
@@ -158,10 +161,10 @@ const Rating = ({
     <>
       <RatingWidget>
         <WidgetHeader>
-          <h3 className="text-h3-title font-bold">Rating</h3>
+          <h3 className="text-h3-title font-bold">{lang === 'fi' ? finalTranslations?.rating?.fi : finalTranslations?.rating?.en}</h3>
           <IconLink>
             <CloseIcon></CloseIcon>
-            <IconName onClick={clearRatings}>Clear ratings</IconName>
+            <IconName onClick={clearRatings}>{lang === 'fi' ? finalTranslations?.clearRatings?.fi : finalTranslations?.clearRatings?.en}</IconName>
           </IconLink>
         </WidgetHeader>
         <RatingItems>

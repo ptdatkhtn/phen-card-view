@@ -26,7 +26,6 @@ export const commentingApi = {
 
     getAllCommentsByPhenId: async (gid, radarId, phenId) => {
         return await httpRequest(baseUrl, 'GET', `commenting/${gid}/radar/${radarId}/phenomenon/${phenId}`)
-
     },
 
     //add hidden phenomennon of radar

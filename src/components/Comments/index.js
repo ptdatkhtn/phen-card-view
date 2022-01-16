@@ -1,16 +1,30 @@
-import React, { useState, useEffect, useMemo } from "react";
+import React, { useContext, useState, useEffect, useMemo } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCommentAlt } from "@fortawesome/free-solid-svg-icons";
 import CommentsModal from "../CommentsModal";
 import {commentingApi} from '../../helpers/commentingFetcher'
-import { uuid } from 'uuidv4';
 import {capitalizeFirstLetter} from '../../helpers/utils'
 import {finalTranslations} from '../../localTranslation'
+import { ACTIONS } from '../../store/Actions'
+import {DataContext} from '../../store/GlobalState'
+import {isEmpty} from '../../helpers/utils'
+import { getUserId } from '@sangre-fp/connectors/session'
 
 const Comments = ({gid, rid, pid, lang, phenomenon}) => {
+  const {state:{ cmtsData},  dispatch } = useContext(DataContext)
+  console.log(777, cmtsData)
+  const cmtsData1 = !!cmtsData?.length ? [...cmtsData] : []
+          !!cmtsData1?.length && cmtsData1?.map((cmt) => {
+            if (getUserId().toString() === cmt.uid.toString()) {
+                cmt['isAuthor'] = true
+              } else {
+                cmt['isAuthor'] = false
+              }
+          })
+          
   const [openCommentsModal, setOpenCommentsModal] = useState(false);
-  const [commentTopic, setCommentTopic] = useState('')
-  const [cmts, setCmts] = useState([])
+  const [commentTopic, setCommentTopic] = useState(null)
+
 
   const openCommentsModalHandle = () => {
     setOpenCommentsModal(true);
@@ -19,55 +33,56 @@ const Comments = ({gid, rid, pid, lang, phenomenon}) => {
   const closeCommentsModalHandle = () => {
     setOpenCommentsModal(false);
   };
-  useEffect(() => {
-    const fetchCmts = async() => {
-      const cmtsRes = await commentingApi.getAllCommentsByPhenId(gid, rid, pid)
-      console.log('11', gid, rid, pid)
-      setCmts(cmtsRes?.data)
-    }
-    !!pid && fetchCmts()
-  }, [gid, rid, pid])
 
   const opportunitiesCmts = useMemo(() => {
-    const a = cmts?.map((cmt) => {
+    const a = !!cmtsData1?.length && cmtsData1?.map((cmt) => {
       const convert2HumunDate = (new Date(+cmt?.['updated_timestamp'] * 1000)).toString().split(' ')
       const mm = new Date(+cmt?.['updated_timestamp'] * 1000).toLocaleDateString().split('/')[1]
-      const cmtTemp = cmt
+      const cmtTemp = (!!cmt && !isEmpty(cmt)) ? {...cmt} : {}
+      console.log('ccc', cmt)
       cmtTemp['updated_humanTime'] = convert2HumunDate[2] + '.' + mm + '.' + convert2HumunDate[3] + ' ' + convert2HumunDate[4]
       return cmtTemp
     }).filter((cmt) => {
-      return cmt?.entity_uri.split('/')[6] == 'opportunities'
+      console.log('checkccking', cmt)
+      return String(cmt?.entity_uri?.split('/')[6]) === 'opportunities'
     })
-    return a
-  }, [cmts])
+    console.log(99, a)
+    return !!a?.length && a?.sort(function(x, y){
+      return x.created_timestamp - y.created_timestamp;
+  })
+  }, [cmtsData, dispatch])
 
   const threatsCmts = useMemo(() => {
-    const a = cmts?.map((cmt) => {
+    const a = !!cmtsData1?.length && cmtsData1?.map((cmt) => {
       const convert2HumunDate = (new Date(+cmt?.['updated_timestamp'] * 1000)).toString().split(' ')
       const mm = new Date(+cmt?.['updated_timestamp'] * 1000).toLocaleDateString().split('/')[1]
-      const cmtTemp = cmt
+      const cmtTemp = (!!cmt && !isEmpty(cmt)) ? {...cmt} : {}
       cmtTemp['updated_humanTime'] = convert2HumunDate[2] + '.' + mm + '.' + convert2HumunDate[3] + ' ' + convert2HumunDate[4]
       return cmtTemp
     }).filter((cmt) => {
-      return cmt?.entity_uri.split('/')[6] == 'threats'
+      return String(cmt?.entity_uri?.split('/')[6]) === 'threats'
     })
-    return a
-  }, [cmts])
+    return !!a?.length && a?.sort(function(x, y){
+      return x.created_timestamp - y.created_timestamp;
+  })
+  }, [cmtsData, dispatch])
 
   const actionsCmts = useMemo(() => {
-    const a = cmts?.map((cmt) => {
+    const a = !!cmtsData1?.length && cmtsData1?.map((cmt) => {
       const convert2HumunDate = (new Date(+cmt?.['updated_timestamp'] * 1000)).toString().split(' ')
       const mm = new Date(+cmt?.['updated_timestamp'] * 1000).toLocaleDateString().split('/')[1]
-      const cmtTemp = cmt
+      const cmtTemp = (!!cmt && !isEmpty(cmt)) ? {...cmt} : {}
       cmtTemp['updated_humanTime'] = convert2HumunDate[2] + '.' + mm + '.' + convert2HumunDate[3] + ' ' + convert2HumunDate[4]
       return cmtTemp
     }).filter((cmt) => {
-      return cmt?.entity_uri.split('/')[6] == 'actions'
+      return String(cmt?.entity_uri?.split('/')[6]) === 'actions'
     })
-    return a
-  }, [cmts])
+    return !!a?.length && a?.sort(function(x, y){
+      return x.created_timestamp - y.created_timestamp;
+  })
+  }, [cmtsData, dispatch])
 
-  console.log(444, finalTranslations)
+  console.log(44499, opportunitiesCmts)
   return (
     <>
       <div className="mt-8">
@@ -91,7 +106,7 @@ const Comments = ({gid, rid, pid, lang, phenomenon}) => {
           </div>
           <>
               {
-                opportunitiesCmts && !!opportunitiesCmts.length && (
+                opportunitiesCmts && !!opportunitiesCmts?.length && (
                   <div className="pt-4 pb-2 px-6 text-crowdsourced">
                     <p className="font-bold">
                       {capitalizeFirstLetter(opportunitiesCmts[opportunitiesCmts?.length - 1]?.['user_name'])} 
@@ -123,7 +138,7 @@ const Comments = ({gid, rid, pid, lang, phenomenon}) => {
 
           <>
               {
-                threatsCmts && !!threatsCmts.length && (
+                threatsCmts && !!threatsCmts?.length && (
                   <div className="pt-4 pb-2 px-6 text-crowdsourced">
                     <p className="font-bold">
                       {capitalizeFirstLetter(threatsCmts[threatsCmts?.length - 1]?.['user_name'])} 
@@ -155,7 +170,7 @@ const Comments = ({gid, rid, pid, lang, phenomenon}) => {
           </div>
           <>
               {
-                actionsCmts && !!actionsCmts.length && (
+                actionsCmts && !!actionsCmts?.length && (
                   <div className="pt-4 pb-2 px-6 text-crowdsourced">
                     <p className="font-bold">
                       {capitalizeFirstLetter(actionsCmts[actionsCmts?.length - 1]?.['user_name'])} 
@@ -170,7 +185,7 @@ const Comments = ({gid, rid, pid, lang, phenomenon}) => {
         </div>
       </div>
       <CommentsModal
-        commentsModalSubmit={closeCommentsModalHandle}
+        // commentsModalSubmit={closeCommentsModalHandle}
         commentsModal={openCommentsModal}
         commentTopic={commentTopic}
         commentsModalClose={closeCommentsModalHandle}
@@ -179,6 +194,7 @@ const Comments = ({gid, rid, pid, lang, phenomenon}) => {
         pid={pid}
         lang={lang}
         phenomenon={phenomenon}
+        cmts={ !!commentTopic && (commentTopic === 'Opportunities' ? opportunitiesCmts : (commentTopic === 'Actions' ? actionsCmts : threatsCmts))}
       />
     </>
   );

@@ -1,10 +1,12 @@
-import React from "react";
+import React, {useContext} from "react";
 import { Modal, paddingModalStyles, confirmDialogModalStyles } from '@sangre-fp/ui'
 import { requestTranslation } from '@sangre-fp/i18n'
 import styled, { createGlobalStyle } from 'styled-components'
 import {commentingApi} from '../../helpers/commentingFetcher'
 import { useSWRConfig } from 'swr'
 import DeleteConfirmationModal from '../DeleteConfirmationModal/DeleteConfirmationModal'
+import { ACTIONS } from '../../store/Actions'
+import {DataContext} from '../../store/GlobalState'
 
 const GlobalStyle = createGlobalStyle`
   .ReactModal__Overlay--after-open {
@@ -56,10 +58,16 @@ const EditCommentModal = ({
   userId,
   functionFromRadatComment,
 }) => {
+  console.log(444, data)
   const { mutate } = useSWRConfig()
+  const { state: {cmtsData}, dispatch } = useContext(DataContext)
   const isOpenModal = React.useMemo(() => (comment_id === isCmtIdIsEditing) , [isCmtIdIsEditing])
-  const [valueInput, setValueInput] = React.useState("")
+  const [valueInput, setValueInput] = React.useState(data?.['comment_text'])
   const [remainingChars, setRemainingChars] = React.useState(MAXCHARS - (+"".length))
+
+  React.useEffect(() => {
+    setValueInput(data?.['comment_text'])
+  }, [data])
 
   const checRemainingCharsInput = (value) => {
     var textAreaValue = +value.length;
@@ -69,6 +77,7 @@ const EditCommentModal = ({
   
   const handleChangeInput = (e) => {
     const tempInputValue = e.target.value
+    console.log(3333, tempInputValue)
     const remainingChars = checRemainingCharsInput(tempInputValue)
     setRemainingChars(() => remainingChars)
     setValueInput(() => tempInputValue)
@@ -80,29 +89,31 @@ const EditCommentModal = ({
   const handleSave = async() => {
         const arrayDataClone = [].concat([data])
         // here find all the items that are not it the arr1
-        const temp = getAllCommentsByRadarId.filter(obj1 => !arrayDataClone.some(obj2 => obj1.comment_id === obj2.comment_id))
+        const temp = !!getAllCommentsByRadarId?.length && getAllCommentsByRadarId?.filter(obj1 => !arrayDataClone.some(obj2 => obj1.comment_id === obj2.comment_id))
         // then just concat it
         // arr1 = [...temp, ...arr2]
+        console.log('temp', temp)
         const newData = {
-          comment_id: data.comment_id,
-          comment_name: data.comment_name,
-          comment_source: data.comment_source,
+          comment_id: data?.comment_id,
+          comment_name: data?.comment_name,
+          comment_source: data?.comment_source,
           comment_text: valueInput,
-          created_timestamp: data.created_timestamp,
-          entity_uri: data.entity_uri,
-          isAuthor: data.isAuthor,
-          phenId: data.phenId,
-          section: data.section,
-          uid: data.uid,
-          updated_timestamp: data.updated_timestamp,
-          user_name: data.user_name
+          created_timestamp: data?.created_timestamp,
+          entity_uri: data?.entity_uri,
+          isAuthor: data?.isAuthor,
+          phenId: data?.phenId,
+          section: data?.section,
+          uid: data?.uid,
+          updated_timestamp: data?.updated_timestamp,
+          user_name: data?.user_name
         }
-        const arr1 = [...temp, 
+        const arr1 = (!!newData && !!temp) && [...temp, 
           newData
         ]
 
-        mutate(['getAllCommentsByRadarId', JSON.stringify(getDataFromConnectors[1]) , radarId, userId], 
+        mutate(['getAllCommentsByRadarId', JSON.stringify(!!getDataFromConnectors?.length && !!getDataFromConnectors[1] && getDataFromConnectors[1]) , radarId, userId], 
           arr1, false)
+          console.log(222, data)
         const groupIdEditing = data?.entity_uri.split('/')[1]
         const radarIdEditing = data?.entity_uri.split('/')[3]
         const phenIdIdEditing = data?.entity_uri.split('/')[5]
@@ -118,14 +129,33 @@ const EditCommentModal = ({
           cmtId,
           {
             // "text": "Nana 456" + abc,
-            "text": valueInput
+            "text": valueInput,
+            "name": data?.comment_name
           }
         )
 
-        mutate(['getAllCommentsByRadarId', JSON.stringify(getDataFromConnectors[1]) , radarId, userId])
+        mutate(['getAllCommentsByRadarId', JSON.stringify(!!getDataFromConnectors?.length && !!getDataFromConnectors[1] && getDataFromConnectors[1]) , radarId, userId])
         
         passingValueToRadarComments(true)
         onClosemodal()
+        const temp1 = !!cmtsData ? [...cmtsData] : []
+
+        var newArr = temp1.reduce(function(acc, curr, index) {
+          if (String(curr?.['comment_id']) === String(newData?.['comment_id']) ) {
+            acc.push(index);
+          }
+          return acc;
+        }, []);
+        
+        console.log(987, temp1[newArr[0]]?.['comment_text'])
+        if (!!temp1?.length) 
+          temp1[newArr[0]]['comment_text'] = newData?.['comment_text']
+        const newCmtsData = temp1
+
+        dispatch({
+          type: ACTIONS.CMTSDATA,
+          payload: temp1
+        })
   }
 
   const handleClose = () => {
@@ -169,7 +199,7 @@ const EditCommentModal = ({
               <div className="form-group">
                 <textarea
                   onChange={handleChangeInput} 
-                  maxLength="1000" type="text" className="form-control" id='comment_textarea' value={valueInput} placeholder={'Message *'}
+                  maxLength="1000" type="text" className="form-control" id='comment_textarea' value={valueInput ?? ''} placeholder={'Message *'}
                   style={{fontSize:'1.41rem', color:'121212', width: '100%', height: 'fit-content', minHeight: '36rem'}}
                   />
                   <label htmlFor="example1" style={{fontSize:'1.25rem', color:'#000', marginBottom: 0}}>{remainingChars} characters remaining</label>

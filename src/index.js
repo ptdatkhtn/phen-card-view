@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import { startSession } from '@sangre-fp/connectors/session'
+import {DataProvider} from "./store/GlobalState";
 
 const renderApp = (
     votingURL
@@ -11,11 +12,14 @@ const renderApp = (
     const params = votingURL.split('/');
         return (
         <React.StrictMode>
-            <App  
-            gid={params[2]}
-            rid={params[3]}
-            pid={params[4]}   
-            />
+            <DataProvider gid={params[2]} rid={params[3]} pid={params[4]}>
+                <App  
+                gid={params[2]}
+                rid={params[3]}
+                pid={params[4]}   
+                />
+            </DataProvider>
+           
             
         </React.StrictMode>
     )

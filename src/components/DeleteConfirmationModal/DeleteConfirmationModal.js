@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useContext} from "react";
 import { Modal, paddingModalStyles } from '@sangre-fp/ui'
 import { requestTranslation } from '@sangre-fp/i18n'
 import {commentingApi} from '../../helpers/commentingFetcher'
@@ -7,6 +7,8 @@ import { getRadar, getPhenomenaTypes } from '@sangre-fp/connectors/drupal-api';
 import radarDataApi from '@sangre-fp/connectors/radar-data-api';
 import {getPhenomena} from '../../helpers/phenomenonFetcher'
 import { getUserId } from '@sangre-fp/connectors/session'
+import { ACTIONS } from '../../store/Actions'
+import {DataContext} from '../../store/GlobalState'
 
 const DeleteConfirmationModal = ({
   isConfirmModalOpened,
@@ -14,6 +16,8 @@ const DeleteConfirmationModal = ({
   data,
   handleCloseModal
 }) => {
+  const { state: {cmtsData}, dispatch } = useContext(DataContext)
+
   const multiFetchersRadars = async (radarId) => {
     const [getRadar_radarDataApi, getRadar_drupal_api] = await Promise.all([
       radarDataApi.getRadar(radarId),
@@ -157,8 +161,13 @@ const DeleteConfirmationModal = ({
 
     mutate(['getAllCommentsByRadarId', JSON.stringify(getDataFromConnectors[1]) , radarIdEditing, userId])
 
+
     handleCloseConfirmModal(false)
     handleCloseModal()
+    dispatch({
+      type: ACTIONS.CMTSDATA,
+      payload: !!cmtsData?.length ? cmtsData?.filter(cmt => cmt?.comment_id !== data?.comment_id) : []
+    })
   }
 
   const handleCancelRemoveBtn = () => {

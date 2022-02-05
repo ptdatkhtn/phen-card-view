@@ -1,5 +1,6 @@
 import axios from 'axios'
 import { getSessionToken } from '@sangre-fp/connectors/session'
+import statisticsApi from '@sangre-fp/connectors/statistics-api'
 
 const SEARCH_API_URL = process.env.REACT_APP_SEARCH_API_URL
 const RADAR_API_URL = process.env.REACT_APP_RADAR_DATA_API_URL
@@ -40,6 +41,15 @@ export async function getRadarData(rid) {
 }
 
 // eslint-disable-next-line max-params
+export async function getPhenomenonNewsByPhenId(news_feed_uuids, gid=[0], language, size = 10) {
+  return httpPostRequest('news-item', {
+    news_feed_uuids: news_feed_uuids,
+    groups: gid,
+    language
+  }).then(({result}) => (console.log('result', result)))
+}
+
+// eslint-disable-next-line max-params
 export async function getPhenomena({ phenomena = [], query, groups = [0], page = 0, size = 10, language = null, enhanced = 1, tags = [], types = [], time_min = null, time_max = null, include_archived = false }) {
     return httpPostRequest('phenomenon', {
       phenomena,
@@ -66,4 +76,8 @@ export async function getPhenomena({ phenomena = [], query, groups = [0], page =
       })),
       ...rest
     }))
+}
+
+export async function getPhenomenaStatistic (id) {
+  return statisticsApi.getPhenomenaStatistics(id);
 }

@@ -6,13 +6,13 @@
 .likeAmount {
   margin-left: 4px;
 }
-.ThumbUp_Btn {
-  color: gray !important;
+.phen-card-app .ThumbUp_Btn {
+  color: gray;
 }
 
-.ThumbUp_Btn:hover {
-  color: black !important;
+.phen-card-app .ThumbUp_Btn:hover {
+  color: black;
 }
-.ThumbUp_Btn.active {
-  color: black !important;
+.phen-card-app .ThumbUp_Btn.active {
+  color: black;
 }

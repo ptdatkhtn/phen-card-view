@@ -8,52 +8,52 @@ html {
     color: #333;
     @apply font-L10;
 }
-.container, .container-fullwidth,
-.container-fullwidth {
-    min-width: unset !important;
-    max-width: unset !important;
+.phen-card-app .container, .container-fullwidth,
+.phen-card-app .container-fullwidth {
+    min-width: unset;
+    max-width: unset;
 
 }
-a:not([href]):not([tabindex]) {
+.phen-card-app a:not([href]):not([tabindex]) {
     color: unset;
 }
-.inlineForThumbUpComponent {
+.phen-card-app .inlineForThumbUpComponent {
     display: inline-block;
 }
 
-.carousel-root .carousel-slider {
-    overflow: unset !important;
+.phen-card-app .carousel-root .carousel-slider {
+    overflow: unset;
 }
 
-.carousel .control-dots .dot {
-    background-color: black !important;
+.phen-card-app .carousel .control-dots .dot {
+    background-color: black;
 }
 
-.control-dots {
-    position: absolute !important;
-    top: -36px !important;
-    z-index: 999 !important;
-    text-align: right !important;
+.phen-card-app .control-dots {
+    position: absolute;
+    top: -36px ;
+    z-index: 999 ;
+    text-align: right;
 }
 
-.carousel-status {
-    display: none !important;
+.phen-card-app .carousel-status {
+    display: none;
 }
 
-.carousel .slide {
-    text-align: left !important;
+.phen-card-app .carousel .slide {
+    text-align: left;
     padding: 8px;
 }
 
-.carousel .slide:hover a {
-    cursor: pointer !important;
+.phen-card-app .carousel .slide:hover a {
+    cursor: pointer;
 }
 
-.carousel .slide:hover h4 {
+.phen-card-app .carousel .slide:hover h4 {
     text-decoration: underline;
-    cursor: pointer !important;
+    cursor: pointer;
 }
 
-.carousel .slide:hover p {
+.phen-card-app .carousel .slide:hover p {
     text-decoration: none;
 }

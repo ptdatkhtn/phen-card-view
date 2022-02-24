@@ -34,7 +34,7 @@ export const DataProvider = ({children, gid, rid, pid}) => {
           })
         }
         try {
-          !!pid && fetchCmts()
+          !!pid && !!rid && fetchCmts()
         } catch (error) {
           
         }

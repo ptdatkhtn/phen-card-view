@@ -67,22 +67,22 @@ const Rating = ({
   const [axisYMin, setaxisYMin] = useState('')
   const [axisYTitle, setaxisYTitle] = useState('')
 
-  const fetchRatingCurrentUser = async () => {
+  // const fetchRatingCurrentUser = async () => {
     
-    try {
-      const  {data}  = await votingApi.getRatingsCurrentUser(gid, rid, pid)
-      if (!isEmpty(data)) {
-        const  avgX = data[`/${gid}/radar/${rid}/phenomenon/${pid}/x`].percentage
-        const avgY = data[`/${gid}/radar/${rid}/phenomenon/${pid}/y`].percentage
-        setSliderXVal(Number(avgX))
-        setSliderYVal(Number(avgY))
-        setIsSliding(true)
-        setError(null)
-      }
-    } catch(e) {
-      setError(e)
-    }
-  }
+  //   try {
+  //     const  {data}  = await votingApi.getRatingsCurrentUser(gid, rid, pid)
+  //     if (!isEmpty(data)) {
+  //       const  avgX = data[`/${gid}/radar/${rid}/phenomenon/${pid}/x`].percentage
+  //       const avgY = data[`/${gid}/radar/${rid}/phenomenon/${pid}/y`].percentage
+  //       setSliderXVal(Number(avgX))
+  //       setSliderYVal(Number(avgY))
+  //       setIsSliding(true)
+  //       setError(null)
+  //     }
+  //   } catch(e) {
+  //     setError(e)
+  //   }
+  // }
 
   const addRating = async() => {
     try {

@@ -10,6 +10,10 @@ const renderApp = (
   ) => {
     
     const params = votingURL.split('/');
+    console.log('params[3]', params[3] === null || params[3] === 'null')
+    if (params[3] === null || params[3] === 'null') {
+        params[3] = null
+    }
         return (
         <React.StrictMode>
             <DataProvider gid={params[2]} rid={params[3]} pid={params[4]}>

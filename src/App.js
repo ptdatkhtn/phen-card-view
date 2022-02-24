@@ -44,7 +44,7 @@ const App = ({gid, rid, pid}) => {
       setRelatedPhenomenaIds(phenomenon.result[0].content.related_phenomena)
     }
     try {
-      gid && rid && pid && fetchPhenomenon()
+      gid && pid && fetchPhenomenon()
     } catch (error) {
       
     }
@@ -95,8 +95,16 @@ console.log('phenomenonData', phenomenonData)
       <CardHeader gid={gid} rid={rid} pid={pid} phenomenon={completedPhenomenon} lang={langRadar}/>
       <YoutubeImageEmbed embedId="rokGy0huYEA" phenomenon={completedPhenomenon} />
       <LatestNewsCarousel lang={langRadar}/>
-      <Rating gid={gid} rid={rid} pid={pid} lang={langRadar}/>
-      <Comments gid={gid} rid={rid} pid={pid} lang={langRadar} phenomenon={completedPhenomenon}/>
+      {
+        rid && (
+          <Rating gid={gid} rid={rid} pid={pid} lang={langRadar}/>
+        )
+      }
+      {
+        rid && (
+          <Comments gid={gid} rid={rid} pid={pid} lang={langRadar} phenomenon={completedPhenomenon}/>
+        )
+      }
       <BodyCard phenomenon={completedPhenomenon} />
       <Links />
       <RelatedPhenomena phenomenon={completedPhenomenon} gid={gid} rid={rid} pid={pid} lang={langRadar}/>

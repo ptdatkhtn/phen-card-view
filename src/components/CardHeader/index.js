@@ -31,7 +31,11 @@ const CardHeader = ({gid, rid, pid, phenomenon, lang}) => {
         </div>
 
         <div className="w-32 flex justify-center">
-          <Voting gid={gid} rid={rid} pid={pid}/>
+          {
+            !!rid && (
+              <Voting gid={gid} rid={rid} pid={pid}/>
+            )
+          }
         </div>
       </div>
       <p className="mb-6 text-lead-text font-bold" dangerouslySetInnerHTML={{__html: phenomenon?.summary}}>

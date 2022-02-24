@@ -1,9 +1,10 @@
 import  axios from 'axios'
 import { getSessionToken } from "@sangre-fp/connectors/session"
 
-const baseUrl = process.env.REACT_APP_BASE_URL_API
+const baseUrl = process.env.REACT_APP_VOTING_BASE_URL_API
 
 async function httpRequest(method, path, payload = null) {
+  console.log('`${baseUrl}/${path}`', `${baseUrl}/${path}`)
   return axios({
       method,
       url: `${baseUrl}/${path}`,

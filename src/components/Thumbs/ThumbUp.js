@@ -61,7 +61,8 @@ const ThumbUp = ({gid, rid, pid, cid, view, size}) => {
     <div className={styles.VotingLike_Wrapper} style={wrapperThumbUp}>
         {
           view === 'thumb_up' && <MaterialIcon
-          className={clsx(styles.ThumbUp_Btn, liked ? styles.active : "")}
+          className={clsx(styles.ThumbUp_Btn, liked ? styles.active : "" )}
+          color={liked ? "black" : "#808080"}
           onClick={toggleLikedBtn}
           fontSize={`${size}px`}
         >
@@ -72,6 +73,7 @@ const ThumbUp = ({gid, rid, pid, cid, view, size}) => {
           amountLikes > 0 && view === 'thumb_up_results' && <MaterialIcon
           className={clsx(styles.ThumbUp_Btn, liked ? styles.active : "")}
           fontSize={`${size}px`}
+          color={liked ? "black" : "#808080"}
           onClick={toggleLikedBtn}
         >
           thumb_up

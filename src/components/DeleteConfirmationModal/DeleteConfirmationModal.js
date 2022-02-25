@@ -2,6 +2,7 @@ import React, {useContext} from "react";
 import { Modal, paddingModalStyles } from '@sangre-fp/ui'
 import { requestTranslation } from '@sangre-fp/i18n'
 import {commentingApi} from '../../helpers/commentingFetcher'
+import { finalTranslations } from "../../localTranslation";
 import useSWR, { useSWRConfig } from 'swr'
 import { getRadar, getPhenomenaTypes } from '@sangre-fp/connectors/drupal-api';
 import radarDataApi from '@sangre-fp/connectors/radar-data-api';
@@ -14,7 +15,8 @@ const DeleteConfirmationModal = ({
   isConfirmModalOpened,
   handleCloseConfirmModal,
   data,
-  handleCloseModal
+  handleCloseModal,
+  lang
 }) => {
   const { state: {cmtsData}, dispatch } = useContext(DataContext)
 
@@ -184,16 +186,16 @@ const DeleteConfirmationModal = ({
       style={paddingModalStyles}
     >
       <div className="confirmation-modal-content pt-4 pb-4" style={{display: 'flex', justifyContent: 'center', flexDirection: 'column', alignItems:'center'}}>
-        <h3 className="confirmation-modal-title" style={{fontSize:'2rem'}}>
-          ARE YOU SURE YOU WANT TO REMOVE THIS COMMENT ?
+        <h3 className="confirmation-modal-title" style={{fontSize:'2rem', fontWeight: 'bold', paddingTop: '4rem', paddingBottom: '2.5rem'}}>
+        {lang === 'fi' ? finalTranslations?.removeCommentConfirmation?.fi : finalTranslations?.removeCommentConfirmation?.en}
         </h3>
-        <div className="confirmation-modal-actions">
+        <div className="confirmation-modal-actions" style={{paddingBottom: '3.9rem'}}>
           <button
             onClick={handleCancelRemoveBtn}
             className="btn btn-lg btn-plain-gray"
             style={{fontSize: '1.61rem', fontWeight: 540}}
           >
-            {requestTranslation("cancel").toUpperCase()}
+           {lang === 'fi' ? finalTranslations?.removeCommentNoOption?.fi : finalTranslations?.removeCommentNoOption?.en}
           </button>
           <button
             onClick={handleYesRemoveCmtBtn}
@@ -201,7 +203,7 @@ const DeleteConfirmationModal = ({
             style={{fontSize: '1.61rem', fontWeight: 540}}
             // onClick={deletePublicLink}
           >
-            YES
+           {lang === 'fi' ? finalTranslations?.removeCommentYesOption?.fi : finalTranslations?.removeCommentYesOption?.en}
           </button>
         </div>
       </div>

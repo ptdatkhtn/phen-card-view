@@ -36,6 +36,42 @@ export const localTranslations = {
     submitCommentModal: {
         'en': 'SUBMIT',
         'fi':'LÄHETÄ'
+    },
+    editCommentTitle: {
+        'en': 'Edit Comment',
+        'fi': 'Muokkaa kommenttia'
+    },
+    cancel: {
+        'en': 'CANCEL',
+        'fi': 'PERUUTA'
+    },
+    save: {
+        'en': 'SAVE',
+        'fi': 'TALLENNA'
+    },
+    removeComment: {
+    'en': 'REMOVE COMMENT',
+    'fi': 'POISTA KOMMENTTI'
+    },
+    removeCommentConfirmation: {
+        en:'Are you sure you want to remove your comment?',
+        fi: 'Haluatko varmasti poistaa kommenttisi?'
+    },
+    removeCommentNoOption: {
+        en: 'NO, KEEP IT',
+        fi: 'EN SITTENKÄÄN'
+    },
+    removeCommentYesOption: {
+        en: 'YES',
+        fi: 'KYLLÄ'
+    },
+    editPhenomenon: {
+        en: 'Edit Phenomenon',
+        fi: 'Muokkaa ilmiötä'
+    },
+    editted: {
+        en: 'Edited',
+        fi: 'Päivitetty'
     }
 }
 

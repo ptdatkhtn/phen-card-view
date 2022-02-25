@@ -5,7 +5,7 @@ import "react-responsive-carousel/lib/styles/carousel.min.css";
 const LatestNews = ({lang}) => {
     return (
         <div className="mt-8 mb-8">
-            <h3 className="text-h3-title font-bold mb-4">{lang === 'fi' ? finalTranslations?.latestNewsTitle?.fi : finalTranslations?.latestNewsTitle?.en}</h3>
+            <h3 className="text-h3-title font-bold mb_4">{lang === 'fi' ? finalTranslations?.latestNewsTitle?.fi : finalTranslations?.latestNewsTitle?.en}</h3>
             <Carousel autoPlay infiniteLoop showArrows={false} showThumbs={false} className="bg-lightgray">
                 <a href="https://www.youtube.com/" target="_blank" rel="noreferrer" className="">
                     <p className="text-meta text-grayText">Business Wire 11.12.2020 23:04</p>

@@ -29,7 +29,7 @@ html {
     background-color: black;
 }
 
-.phen-card-app .control-dots {
+.phen-card-app .carousel .control-dots {
     position: absolute;
     top: -36px ;
     z-index: 999 ;
@@ -56,4 +56,36 @@ html {
 
 .phen-card-app .carousel .slide:hover p {
     text-decoration: none;
+}
+
+.mb_4 {
+    margin-bottom: 1rem
+}
+
+.mb_5{
+    margin-bottom: 1.25rem;
+}
+
+.pr_4 {
+    padding-right: 1rem;
+}
+
+.pb_4 {
+    padding-bottom: 1rem;
+}
+
+.pt_4 {
+    padding-top: 1rem;
+}
+
+.pb_2 {
+    padding-bottom: 0.5rem;
+}
+
+.pr_3 {
+    padding-right: 0.7rem;
+}
+
+.border-w-0_5 {
+    border-width: 0.5px
 }

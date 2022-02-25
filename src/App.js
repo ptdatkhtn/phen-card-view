@@ -109,7 +109,7 @@ console.log('phenomenonData', phenomenonData)
       <Links />
       <RelatedPhenomena phenomenon={completedPhenomenon} gid={gid} rid={rid} pid={pid} lang={langRadar}/>
       <LatestNews phenomenon={completedPhenomenon} lang={langRadar}/>
-      <CardFooter />
+      <CardFooter lang={langRadar}/>
     </div>
   )
 }

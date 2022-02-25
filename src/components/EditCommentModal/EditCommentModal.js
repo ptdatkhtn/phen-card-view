@@ -7,6 +7,7 @@ import { useSWRConfig } from 'swr'
 import DeleteConfirmationModal from '../DeleteConfirmationModal/DeleteConfirmationModal'
 import { ACTIONS } from '../../store/Actions'
 import {DataContext} from '../../store/GlobalState'
+import {finalTranslations} from '../../localTranslation'
 
 const GlobalStyle = createGlobalStyle`
   .ReactModal__Overlay--after-open {
@@ -55,6 +56,7 @@ const EditCommentModal = ({
   getAllCommentsByRadarId,
   getDataFromConnectors,
   radarId,
+  lang,
   userId,
   functionFromRadatComment,
 }) => {
@@ -193,7 +195,7 @@ const EditCommentModal = ({
         >
            <div className="modal-form-sections">
             <div className="modal-form-section modal-form-header">
-              <h3 style={{fontSize:'2.1rem', color:'121212'}}>Edit comment</h3>
+              <h3 style={{fontSize:'2.2rem', color:'121212', fontWeight: '700', paddingBottom: '1.2rem'}}>{lang === 'fi' ? finalTranslations?.editCommentTitle?.fi : finalTranslations?.editCommentTitle?.en}</h3>
             </div>
             <div className="modal-form-section" style={{paddingTop: 0}}>
               <div className="form-group">
@@ -202,7 +204,7 @@ const EditCommentModal = ({
                   maxLength="1000" type="text" className="form-control" id='comment_textarea' value={valueInput ?? ''} placeholder={'Message *'}
                   style={{fontSize:'1.41rem', color:'121212', width: '100%', height: 'fit-content', minHeight: '36rem'}}
                   />
-                  <label htmlFor="example1" style={{fontSize:'1.25rem', color:'#000', marginBottom: 0}}>{remainingChars} characters remaining</label>
+                  <label htmlFor="example1" style={{fontSize:'1.25rem', color:'#000', marginBottom: 0}}>{remainingChars} {lang === 'fi' ? finalTranslations?.charactersRemainingText?.fi : finalTranslations?.charactersRemainingText?.en}</label>
               </div>
             </div>
     
@@ -213,14 +215,15 @@ const EditCommentModal = ({
                 handleCloseConfirmModal={handleCloseConfirmModal}
                 isConfirmModalOpened={isConfirmModalOpened}
                 data={data}
+                lang={lang}
                 handleCloseModal={handleCloseModal}
                 radarId={radarId}
                 />
-              <button type="button" className="btn btn-lg btn-plain-gray" onClick={handleRemoveComment} style={{paddingLeft: 0, fontSize: '1.61rem', fontWeight: 540}}>REMOVE COMMENT</button>
+              <button type="button" className="btn btn-lg btn-plain-gray" onClick={handleRemoveComment} style={{paddingLeft: 0, fontSize: '1.61rem', fontWeight: 540}}>{lang === 'fi' ? finalTranslations?.removeComment?.fi : finalTranslations?.removeComment?.en}</button>
             </div>
             <div>
-              <button type="button" className="btn btn-lg btn-plain-gray" onClick={handleCloseModal} style={{fontSize: '1.61rem', fontWeight: 540}}>Cancel</button>
-              <button type="button" className="btn btn-lg btn-primary" onClick={handleSave} style={{fontSize: '1.61rem', fontWeight: 540}}>Save</button>
+              <button type="button" className="btn btn-lg btn-plain-gray" onClick={handleCloseModal} style={{fontSize: '1.61rem', fontWeight: 540}}>{lang === 'fi' ? finalTranslations?.cancel?.fi : finalTranslations?.cancel?.en}</button>
+              <button type="button" className="btn btn-lg btn-primary" onClick={handleSave} style={{fontSize: '1.61rem', fontWeight: 540}}>{lang === 'fi' ? finalTranslations?.save?.fi : finalTranslations?.save?.en}</button>
             </div>
           </div>
         </Modal>

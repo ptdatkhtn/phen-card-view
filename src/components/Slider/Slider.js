@@ -25,7 +25,7 @@ const Slider = ({
   return (
     <Container>
       <RatingHeader>
-        <RatingItemHeader className="mb-5">{axisName}</RatingItemHeader>
+        <RatingItemHeader className="mb_5">{axisName}</RatingItemHeader>
       </RatingHeader>
       <RatingItem>
         <RatingSliderScale>

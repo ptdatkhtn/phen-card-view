@@ -1,5 +1,5 @@
 module.exports = {
-  important: true,
+  // important: true,
   content: [
     "./src/**/*.{js,jsx}",
   ],
@@ -19,7 +19,9 @@ module.exports = {
       'h2-title': '2.6rem',
       'h3-title': '2rem',
       'h4-title': '1.5rem',
-      'links-title': '1.6rem'
+      'links-title': '1.6rem',
+      'chat-icon': '1.44rem',
+      'clock-icon': '1.54rem'
     },
     extend: {
       colors: {
@@ -28,12 +30,14 @@ module.exports = {
         blue: '#006998',
         grayText: '#777',
         blackText: '#000',
-        grayBgTextModal: '#cbcbcb'
+        grayBgTextModal: '#cbcbcb',
+        grayTimeStampComment: '#666666'
       },
       spacing: {
         '56.25%': '56.25%',
         '100%': '100%',
-        '0.5': '1px'
+        '0.5': '1px',
+        'comment-section': '1.25rem',
       }
 
     },

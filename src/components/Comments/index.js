@@ -86,52 +86,46 @@ const Comments = ({gid, rid, pid, lang, phenomenon}) => {
   return (
     <>
       <div className="mt-8">
-        <h3 className="text-h3-title font-bold mb-4">{lang === 'fi' ? finalTranslations?.commenting?.fi : finalTranslations?.commenting?.en}</h3>
+        <h3 className="text-h3-title font-bold mb_4">{lang === 'fi' ? finalTranslations?.commenting?.fi : finalTranslations?.commenting?.en}</h3>
         <div>
-          <div className="bg-lightgray flex items-center justify-between py-5 pr-4 pl-6 border-white border-solid border-b-2 text-crowdsourced">
+          <div className="bg-lightgray flex items-center justify-between py-comment-section pr_4 pl-6 border-white border-solid border-b-2 text-crowdsourced">
             <p className="font-bold text-p-desc">{lang === 'fi' ? finalTranslations?.opportunitiesCommentSection?.fi : finalTranslations?.opportunitiesCommentSection?.en}</p>
             <p
-              className="text-blue font-medium cursor-pointer flex items-center"
+              className="text-blue font-medium cursor-pointer flex items-center pr_3"
               onClick={() => {
                   setCommentTopic('Opportunities');
                   openCommentsModalHandle();
               }}
             >
-              <FontAwesomeIcon
-                icon={faCommentAlt}
-                className="text-lead-text mr-3 mt-1"
-              />
+              <span className="af-custom-chat text-chat-icon mr-3 mt-1"></span>
               {lang === 'fi' ? finalTranslations?.commentViewBtn?.fi : finalTranslations?.commentViewBtn?.en}
             </p>
           </div>
           <>
               {
                 opportunitiesCmts && !!opportunitiesCmts?.length && (
-                  <div className="pt-4 pb-2 px-6 text-crowdsourced">
+                  <div className="pt_4 px-6 text-crowdsourced">
                     <p className="font-bold">
                       {capitalizeFirstLetter(opportunitiesCmts[opportunitiesCmts?.length - 1]?.['user_name'])} 
                         {" "} 
-                          {opportunitiesCmts[opportunitiesCmts?.length - 1]['updated_humanTime']} </p>
-                    <p className="my-4 pt-1 ">{opportunitiesCmts[opportunitiesCmts?.length - 1]?.['comment_text']}</p>
+                          <span className="text-grayTimeStampComment font-normal ml-2">{opportunitiesCmts[opportunitiesCmts?.length - 1]['updated_humanTime']}</span> </p>
+                    <p className="pt_4 pb_4 ">{opportunitiesCmts[opportunitiesCmts?.length - 1]?.['comment_text']}</p>
                   </div>
                 )
               }
           </>
 
 
-          <div className="bg-lightgray flex items-center justify-between py-5 pr-4 pl-6 border-white border-solid border-b-2 text-crowdsourced">
+          <div className="bg-lightgray flex items-center justify-between py-comment-section pr_4 pl-6 border-white border-solid border-b-2 text-crowdsourced">
             <p className="text-p-desc font-bold">{lang === 'fi' ? finalTranslations?.threatsCommentSection?.fi : finalTranslations?.threatsCommentSection?.en}</p>
             <p
-              className="text-blue font-medium cursor-pointer flex items-center"
+              className="text-blue font-medium cursor-pointer flex items-center pr_3"
               onClick={() =>{
                 setCommentTopic('Threats');
                 openCommentsModalHandle();
               }}
             >
-              <FontAwesomeIcon
-                icon={faCommentAlt}
-                className="text-lead-text mr-3 mt-1"
-              />
+              <span className="af-custom-chat text-chat-icon mr-3 mt-1"></span>
               {lang === 'fi' ? finalTranslations?.commentViewBtn?.fi : finalTranslations?.commentViewBtn?.en}
             </p>
           </div>
@@ -139,12 +133,12 @@ const Comments = ({gid, rid, pid, lang, phenomenon}) => {
           <>
               {
                 threatsCmts && !!threatsCmts?.length && (
-                  <div className="pt-4 pb-2 px-6 text-crowdsourced">
+                  <div className="pt_4 px-6 text-crowdsourced">
                     <p className="font-bold">
                       {capitalizeFirstLetter(threatsCmts[threatsCmts?.length - 1]?.['user_name'])} 
                         {" "} 
-                          {threatsCmts[threatsCmts?.length - 1]['updated_humanTime']} </p>
-                    <p className="my-4 pt-1 ">{threatsCmts[threatsCmts?.length - 1]?.['comment_text']}</p>
+                        <span className="text-grayTimeStampComment font-normal ml-2">{threatsCmts[threatsCmts?.length - 1]['updated_humanTime']}</span> </p>
+                    <p className="pt_4 pb_4 ">{threatsCmts[threatsCmts?.length - 1]?.['comment_text']}</p>
                   </div>
                 )
               }
@@ -152,31 +146,28 @@ const Comments = ({gid, rid, pid, lang, phenomenon}) => {
 
 
 
-          <div className="bg-lightgray flex items-center justify-between py-5 pr-4 pl-6 border-white border-solid border-b-2 text-crowdsourced">
+          <div className="bg-lightgray flex items-center justify-between py-comment-section pr_4 pl-6 border-white border-solid border-b-2 text-crowdsourced">
             <p className="text-p-desc font-bold">{lang === 'fi' ? finalTranslations?.actionsCommentSection?.fi : finalTranslations?.actionsCommentSection?.en}</p>
             <p
-              className="text-blue font-medium cursor-pointer flex items-center"
+              className="text-blue font-medium cursor-pointer flex items-center pr_3"
               onClick={() => {
                 setCommentTopic('Actions');
                 openCommentsModalHandle();
               }}
             >
-              <FontAwesomeIcon
-                icon={faCommentAlt}
-                className="text-lead-text mr-3 mt-1"
-              />
+              <span className="af-custom-chat text-chat-icon mr-3 mt-1"></span>
               {lang === 'fi' ? finalTranslations?.commentViewBtn?.fi : finalTranslations?.commentViewBtn?.en}
             </p>
           </div>
           <>
               {
                 actionsCmts && !!actionsCmts?.length && (
-                  <div className="pt-4 pb-2 px-6 text-crowdsourced">
+                  <div className="pt_4 px-6 text-crowdsourced">
                     <p className="font-bold">
                       {capitalizeFirstLetter(actionsCmts[actionsCmts?.length - 1]?.['user_name'])} 
                         {" "} 
-                          {actionsCmts[actionsCmts?.length - 1]['updated_humanTime']} </p>
-                    <p className="my-4 pt-1 ">{actionsCmts[actionsCmts?.length - 1]?.['comment_text']}</p>
+                        <span className="text-grayTimeStampComment font-normal ml-2">{actionsCmts[actionsCmts?.length - 1]['updated_humanTime']}</span> </p>
+                    <p className="pt_4 pb_4 ">{actionsCmts[actionsCmts?.length - 1]?.['comment_text']}</p>
                   </div>
                 )
               }

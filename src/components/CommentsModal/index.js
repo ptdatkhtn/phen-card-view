@@ -90,31 +90,33 @@ const CommentsModal = ({
   // commentId: "8134cc4f-b196-43e5-9b8e-c460fc8bfb02"
   // upsertComment: async (gid, radarId, pid, section, cmtId, payload) 
   const commentsModalSubmit = async () => {
-    const resNewCmt = await commentingApi.upsertComment(
-      gid, 
-      rid, 
-      pid, 
-      commentTopic?.toLowerCase(), 
-      uuid(),
-      {
-        "text": valueInput,
-        "name": valueInputName
-      }
-    )
-    console.log('resNewCmt', resNewCmt)
-    const resGetAllCmtsByPhenId = await commentingApi.getAllCommentsByPhenId(
-      gid, 
-      rid, 
-      pid
-    )
-    dispatch({
-      type: ACTIONS.CMTSDATA,
-      payload: [...resGetAllCmtsByPhenId?.data]
-    })
-    commentsModalClose()
-    setValueInput('')
-    setValueInputName('')
-    setRemainingChars(MAXCHARS)
+    if (!!valueInput?.length) {
+      const resNewCmt = await commentingApi.upsertComment(
+        gid, 
+        rid, 
+        pid, 
+        commentTopic?.toLowerCase(), 
+        uuid(),
+        {
+          "text": valueInput,
+          "name": valueInputName
+        }
+      )
+      console.log('resNewCmt', resNewCmt)
+      const resGetAllCmtsByPhenId = await commentingApi.getAllCommentsByPhenId(
+        gid, 
+        rid, 
+        pid
+      )
+      dispatch({
+        type: ACTIONS.CMTSDATA,
+        payload: [...resGetAllCmtsByPhenId?.data]
+      })
+      // commentsModalClose()
+      setValueInput('')
+      setValueInputName('')
+      setRemainingChars(MAXCHARS)
+    }
   }
 
   const functionFromRadatComment = (value) => {
@@ -150,10 +152,10 @@ const CommentsModal = ({
           style={paddingModalStyles}
         >
           <div className="confirmation-modal-content px-16 pt-4 pb-8">
-            <h1 className="text-h1-modal-title font-bold mb-5">{phenomenon?.short_title}</h1>
+            <h1 className="text-h1-modal-title font-bold mb_5">{phenomenon?.short_title}</h1>
             {/* messageModal */}
             <div className="mt-7">
-              <p className="py-5 pl-6 pr-4 border-2 bg-grayBgTextModal text-p-desc font-bold">
+              <p className="py-comment-section pl-6 pr_4 border-2 bg-grayBgTextModal text-p-desc font-bold">
                 {translationTitle}
               </p>
               {/* showChat */}
@@ -172,14 +174,14 @@ const CommentsModal = ({
                           <div className="pt-4 pb-1 px-6 text-crowdsourced my-4 flex flex-col">
                             <div className="flex justify-between items-center">
                               <div className="flex items-end">
-                                <div className="font-bold">{capitalizeFirstLetter(cmt?.['user_name'])} {" "} {cmt?.['updated_humanTime']}</div>
+                                <div className="font-bold"><span>{capitalizeFirstLetter(cmt?.['user_name'])}</span> {" "} <span className="text-grayTimeStampComment font-normal ml-2">{cmt?.['updated_humanTime']}</span></div>
                                 <div className="ml-6 pl-6 h-8 border-l-2 border-black font-normal inline"></div>
                                 <ThumbUp
                                   cid={cmtId}
                                   gid={gid}
                                   rid={rid}
                                   pid={pid}
-                                  size={"24"}
+                                  size={"20"}
                                   view={"thumb_up"}
                                 />
                               </div>
@@ -265,6 +267,7 @@ const CommentsModal = ({
           isOpenEditCommentingModal={openEditCommentModal}
           onClosemodal={closeEditCommentModalHandle}
           data={currentCmtIsHandling}
+          lang={lang}
           functionFromRadatComment={functionFromRadatComment}
         />
       </>

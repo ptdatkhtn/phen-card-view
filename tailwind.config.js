@@ -8,20 +8,20 @@ module.exports = {
       'L10': ['L10', 'ui-sans-serif']
     },
     fontSize: {
-      'h1-modal-title': '2.2rem',
-      'h1-title': ['3.2rem', '1.2'],
-      'field-text': '1.5rem',
-      'crowdsourced': '1.2rem',
-      'p-desc': '1.3rem',
-      'lead-text': '1.54rem',
-      'meta': '1.3rem',
-      'body-text': '1.4rem',
-      'h2-title': '2.6rem',
-      'h3-title': '2rem',
-      'h4-title': '1.5rem',
-      'links-title': '1.6rem',
-      'chat-icon': '1.44rem',
-      'clock-icon': '1.54rem'
+      'h1-modal-title': '22px',
+      'h1-title': '32px',
+      'field-text': '15px',
+      'crowdsourced': '12px',
+      'p-desc': '13px',
+      'lead-text': '15.4px',
+      'meta': '13px',
+      'body-text': '14px',
+      'h2-title': '26px',
+      'h3-title': '20px',
+      'h4-title': '15px',
+      'links-title': '16px',
+      'chat-icon': '14.4px',
+      'clock-icon': '15.4px'
     },
     extend: {
       colors: {
@@ -37,10 +37,16 @@ module.exports = {
         '56.25%': '56.25%',
         '100%': '100%',
         '0.5': '1px',
-        'comment-section': '1.25rem',
+        '2.5px': '2.5px',
+        '5px':'5px',
+        '4px':'4px',
+        '6px':'6px',
+        '3px':'3px',
+        'comment-section': '12.5px',
       }
 
     },
   },
   plugins: [],
+  prefix: 'phen-card-tw-',
 }

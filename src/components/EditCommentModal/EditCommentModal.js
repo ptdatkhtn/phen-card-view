@@ -94,7 +94,7 @@ const EditCommentModal = ({
         const temp = !!getAllCommentsByRadarId?.length && getAllCommentsByRadarId?.filter(obj1 => !arrayDataClone.some(obj2 => obj1.comment_id === obj2.comment_id))
         // then just concat it
         // arr1 = [...temp, ...arr2]
-        console.log('temp', temp)
+        console.log('dataaaaaaa....', data)
         const newData = {
           comment_id: data?.comment_id,
           comment_name: data?.comment_name,
@@ -195,16 +195,16 @@ const EditCommentModal = ({
         >
            <div className="modal-form-sections">
             <div className="modal-form-section modal-form-header">
-              <h3 style={{fontSize:'2.2rem', color:'121212', fontWeight: '700', paddingBottom: '1.2rem'}}>{lang === 'fi' ? finalTranslations?.editCommentTitle?.fi : finalTranslations?.editCommentTitle?.en}</h3>
+              <h3 style={{fontSize:'22px', color:'121212', fontWeight: '700', paddingBottom: '12px'}}>{lang === 'fi' ? finalTranslations?.editCommentTitle?.fi : finalTranslations?.editCommentTitle?.en}</h3>
             </div>
             <div className="modal-form-section" style={{paddingTop: 0}}>
               <div className="form-group">
                 <textarea
                   onChange={handleChangeInput} 
                   maxLength="1000" type="text" className="form-control" id='comment_textarea' value={valueInput ?? ''} placeholder={'Message *'}
-                  style={{fontSize:'1.41rem', color:'121212', width: '100%', height: 'fit-content', minHeight: '36rem'}}
+                  style={{fontSize:'14.1px', color:'121212', width: '100%', height: 'fit-content', minHeight: '360px'}}
                   />
-                  <label htmlFor="example1" style={{fontSize:'1.25rem', color:'#000', marginBottom: 0}}>{remainingChars} {lang === 'fi' ? finalTranslations?.charactersRemainingText?.fi : finalTranslations?.charactersRemainingText?.en}</label>
+                  <label htmlFor="example1" style={{fontSize:'13px', color:'#000', marginBottom: 0}}>{remainingChars} {lang === 'fi' ? finalTranslations?.charactersRemainingText?.fi : finalTranslations?.charactersRemainingText?.en}</label>
               </div>
             </div>
     
@@ -219,11 +219,11 @@ const EditCommentModal = ({
                 handleCloseModal={handleCloseModal}
                 radarId={radarId}
                 />
-              <button type="button" className="btn btn-lg btn-plain-gray" onClick={handleRemoveComment} style={{paddingLeft: 0, fontSize: '1.61rem', fontWeight: 540}}>{lang === 'fi' ? finalTranslations?.removeComment?.fi : finalTranslations?.removeComment?.en}</button>
+              <button type="button" className="btn btn-sm btn-plain-gray" onClick={handleRemoveComment} style={{paddingLeft: 0, fontSize: '16.1px', fontWeight: 540}}>{lang === 'fi' ? finalTranslations?.removeComment?.fi : finalTranslations?.removeComment?.en}</button>
             </div>
             <div>
-              <button type="button" className="btn btn-lg btn-plain-gray" onClick={handleCloseModal} style={{fontSize: '1.61rem', fontWeight: 540}}>{lang === 'fi' ? finalTranslations?.cancel?.fi : finalTranslations?.cancel?.en}</button>
-              <button type="button" className="btn btn-lg btn-primary" onClick={handleSave} style={{fontSize: '1.61rem', fontWeight: 540}}>{lang === 'fi' ? finalTranslations?.save?.fi : finalTranslations?.save?.en}</button>
+              <button type="button" className="btn btn-sm btn-plain-gray" onClick={handleCloseModal} style={{fontSize: '16.1px', fontWeight: 540}}>{lang === 'fi' ? finalTranslations?.cancel?.fi : finalTranslations?.cancel?.en}</button>
+              <button type="button" className="btn btn-sm btn-primary" onClick={handleSave} style={{fontSize: '16.1px', fontWeight: 540}}>{lang === 'fi' ? finalTranslations?.save?.fi : finalTranslations?.save?.en}</button>
             </div>
           </div>
         </Modal>

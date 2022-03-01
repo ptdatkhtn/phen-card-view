@@ -6,9 +6,9 @@ const YoutubeImageEmbed = ({ embedId, phenomenon }) => {
     return (
         (phenomenon && !isEmpty(phenomenon)) ? (
             <>
-                {phenomenon?.media?.video && <div className="overflow-hidden pb-56.25% relative h-0" >
+                {phenomenon?.media?.video && <div className="phen-card-tw-overflow-hidden phen-card-tw-pb-56.25% phen-card-tw-relative phen-card-tw-h-0" >
                      <iframe
-                        className="left-0 top-0 h-100% w-100% absolute"
+                        className="phen-card-tw-left-0 phen-card-tw-top-0 phen-card-tw-h-100% phen-card-tw-w-100% phen-card-tw-absolute"
                         width="853"
                         height="480"
                         src={phenomenon?.media?.video}
@@ -19,8 +19,8 @@ const YoutubeImageEmbed = ({ embedId, phenomenon }) => {
                         title="Embedded youtube"
                     />
                 </div>}
-                {phenomenon?.media?.text &&<p className="mt-2 text-p-desc italic">{phenomenon?.media?.text}</p>}
-                {phenomenon?.media?.image && <img className="h-100% w-100% mt-4" src={phenomenon?.media?.image} alt="nature"/>}
+                {phenomenon?.media?.text &&<p className="phen-card-tw-mt-2 phen-card-tw-text-p-desc phen-card-tw-italic">{phenomenon?.media?.text}</p>}
+                {phenomenon?.media?.image && <img className="phen-card-tw-h-100% phen-card-tw-w-100% phen-card-tw-mt-4" src={phenomenon?.media?.image} alt="nature"/>}
             </>
         ) :null
     );

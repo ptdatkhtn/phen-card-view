@@ -161,7 +161,7 @@ const Rating = ({
     <>
       <RatingWidget>
         <WidgetHeader>
-          <h3 className="text-h3-title font-bold mb_5">{lang === 'fi' ? finalTranslations?.rating?.fi : finalTranslations?.rating?.en}</h3>
+          <h3 className="phen-card-tw-text-h3-title phen-card-tw-font-bold mb_5">{lang === 'fi' ? finalTranslations?.rating?.fi : finalTranslations?.rating?.en}</h3>
           <IconLink>
             <CloseIcon></CloseIcon>
             <IconName onClick={clearRatings}>{lang === 'fi' ? finalTranslations?.clearRatings?.fi : finalTranslations?.clearRatings?.en}</IconName>

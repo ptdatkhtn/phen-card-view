@@ -1,29 +1,36 @@
 #card-body {
-    @apply mt-8;
+    @apply phen-card-tw-mt-6;
 }
 
 #card-body h2 {
-    @apply text-h2-title font-bold mb-5;
+    font-size: 26px;
+    font-weight: 700;
+    margin-bottom: 12.6px;
+    /* @apply phen-card-tw-text-h2-title phen-card-tw-font-bold phen-card-tw-mb-4; */
 }
 
 #card-body h3 {
-    @apply text-h3-title font-bold mb-5;
+    font-size: 20px;
+    font-weight: 700;
+    margin-bottom: 12.6px;
 }
 
 #card-body p {
-    @apply text-body-text mb-6;
+    font-size: 14px;
+    @apply phen-card-tw-mb-4;
 }
 
 #card-body ul {
-    @apply list-disc pl-10;
+    @apply phen-card-tw-list-disc phen-card-tw-pl-6;
 }
 
 #card-body li {
-    @apply text-body-text mb-3;
+    font-size: 14px;
+    @apply phen-card-tw-mb-2;
 }
 
 #card-body li a {
-    @apply text-blue overflow-hidden break-words hover:underline;
+    @apply phen-card-tw-text-blue phen-card-tw-overflow-hidden phen-card-tw-break-words hover:phen-card-tw-underline;
 }
 
 

@@ -3,11 +3,11 @@
 @tailwind utilities;
 
 
-html {
-    font-size: 62.5%;
+.phen-card-app {
+    @apply phen-card-tw-font-L10;
     color: #333;
-    @apply font-L10;
 }
+
 .phen-card-app .container, .container-fullwidth,
 .phen-card-app .container-fullwidth {
     min-width: unset;
@@ -34,6 +34,7 @@ html {
     top: -36px ;
     z-index: 999 ;
     text-align: right;
+    pointer-events: none;
 }
 
 .phen-card-app .carousel-status {
@@ -43,15 +44,18 @@ html {
 .phen-card-app .carousel .slide {
     text-align: left;
     padding: 8px;
+    cursor: pointer;
 }
 
 .phen-card-app .carousel .slide:hover a {
     cursor: pointer;
+    text-decoration: none;
 }
 
 .phen-card-app .carousel .slide:hover h4 {
     text-decoration: underline;
     cursor: pointer;
+    color: #333 !important;
 }
 
 .phen-card-app .carousel .slide:hover p {
@@ -59,33 +63,39 @@ html {
 }
 
 .mb_4 {
-    margin-bottom: 1rem
+    margin-bottom: 10px
 }
 
 .mb_5{
-    margin-bottom: 1.25rem;
+    margin-bottom: 12.6px;
+
 }
 
 .pr_4 {
-    padding-right: 1rem;
+    padding-right: 10px;
 }
 
 .pb_4 {
-    padding-bottom: 1rem;
+    padding-bottom: 10px;
 }
 
 .pt_4 {
-    padding-top: 1rem;
+    padding-top: 10px;
 }
 
 .pb_2 {
-    padding-bottom: 0.5rem;
+    padding-bottom: 5px;
 }
 
 .pr_3 {
-    padding-right: 0.7rem;
+    padding-right: 7px;
 }
 
 .border-w-0_5 {
     border-width: 0.5px
+}
+
+.w_h_16 {
+    width: 16px;
+    height:16px;
 }

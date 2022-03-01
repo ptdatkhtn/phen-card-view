@@ -3,18 +3,18 @@ import { isEmpty } from "../../helpers/utils";
 
 const Links = ({ phenomenon }) => {
   return phenomenon?.links && !isEmpty(phenomenon) ? (
-    <div className="mt-8">
-      <h4 className="text-links-title font-bold mb-5">Links</h4>
+    <div className="phen-card-tw-mt-6">
+      <h4 className="phen-card-tw-text-links-title phen-card-tw-font-bold phen-card-tw-mb-4">Links</h4>
       {phenomenon?.links?.map((link) => (
         <>
-          <h4 className="text-links-title font-bold mb-5">Links</h4>
           <a
             href="https://fortune.com/2021/11/23/south-korea-culture-success-bts-kpop-netflix-kdrama-squid-game-ramon-pacheco-pardo/"
             target="_blank"
             rel="noreferrer"
-            className="text-blue text-body-text"
+            className="phen-card-tw-text-blue phen-card-tw-text-body-text"
           >
-            https://fortune.com/2021/11/23/south-korea-culture-success-bts-kpop-netflix-kdrama-squid-game-ramon-pacheco-pardo/
+            {/* https://fortune.com/2021/11/23/south-korea-culture-success-bts-kpop-netflix-kdrama-squid-game-ramon-pacheco-pardo/ */}
+            {link?.url}
           </a>
           <br />
         </>

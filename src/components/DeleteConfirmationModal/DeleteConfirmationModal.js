@@ -185,22 +185,22 @@ const DeleteConfirmationModal = ({
       ariaHideApp={false}
       style={paddingModalStyles}
     >
-      <div className="confirmation-modal-content pt-4 pb-4" style={{display: 'flex', justifyContent: 'center', flexDirection: 'column', alignItems:'center'}}>
-        <h3 className="confirmation-modal-title" style={{fontSize:'2rem', fontWeight: 'bold', paddingTop: '4rem', paddingBottom: '2.5rem'}}>
+      <div className="confirmation-modal-content phen-card-tw-pt-4 phen-card-tw-pb-4" style={{display: 'flex', justifyContent: 'center', flexDirection: 'column', alignItems:'center'}}>
+        <h3 className="confirmation-modal-title" style={{fontSize:'20px', fontWeight: 'bold', paddingTop: '40px', paddingBottom: '25px'}}>
         {lang === 'fi' ? finalTranslations?.removeCommentConfirmation?.fi : finalTranslations?.removeCommentConfirmation?.en}
         </h3>
-        <div className="confirmation-modal-actions" style={{paddingBottom: '3.9rem'}}>
+        <div className="confirmation-modal-actions" style={{paddingBottom: '39px'}}>
           <button
             onClick={handleCancelRemoveBtn}
-            className="btn btn-lg btn-plain-gray"
-            style={{fontSize: '1.61rem', fontWeight: 540}}
+            className="btn btn-sm btn-plain-gray"
+            style={{fontSize: '16.1px', fontWeight: 540}}
           >
            {lang === 'fi' ? finalTranslations?.removeCommentNoOption?.fi : finalTranslations?.removeCommentNoOption?.en}
           </button>
           <button
             onClick={handleYesRemoveCmtBtn}
-            className="btn btn-lg btn-primary"
-            style={{fontSize: '1.61rem', fontWeight: 540}}
+            className="btn btn-sm btn-primary"
+            style={{fontSize: '16.1px', fontWeight: 540}}
             // onClick={deletePublicLink}
           >
            {lang === 'fi' ? finalTranslations?.removeCommentYesOption?.fi : finalTranslations?.removeCommentYesOption?.en}

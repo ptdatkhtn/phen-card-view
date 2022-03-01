@@ -90,6 +90,7 @@ const CommentsModal = ({
   // commentId: "8134cc4f-b196-43e5-9b8e-c460fc8bfb02"
   // upsertComment: async (gid, radarId, pid, section, cmtId, payload) 
   const commentsModalSubmit = async () => {
+    console.log('valueInputNamevalueInputNamevalueInputNamevalueInputName', valueInputName)
     if (!!valueInput?.length) {
       const resNewCmt = await commentingApi.upsertComment(
         gid, 
@@ -108,6 +109,8 @@ const CommentsModal = ({
         rid, 
         pid
       )
+
+      console.log('resGetAllCmtsByPhenIdresGetAllCmtsByPhenId', resGetAllCmtsByPhenId)
       dispatch({
         type: ACTIONS.CMTSDATA,
         payload: [...resGetAllCmtsByPhenId?.data]
@@ -151,15 +154,15 @@ const CommentsModal = ({
           ariaHideApp={false}
           style={paddingModalStyles}
         >
-          <div className="confirmation-modal-content px-16 pt-4 pb-8">
-            <h1 className="text-h1-modal-title font-bold mb_5">{phenomenon?.short_title}</h1>
+          <div className="confirmation-modal-content phen-card-tw-px-12 phen-card-tw-pt-3 phen-card-tw-pb-6">
+            <h1 className="phen-card-tw-text-h1-modal-title phen-card-tw-font-bold mb_5">{phenomenon?.short_title}</h1>
             {/* messageModal */}
-            <div className="mt-7">
-              <p className="py-comment-section pl-6 pr_4 border-2 bg-grayBgTextModal text-p-desc font-bold">
+            <div className="phen-card-tw-mt-2">
+              <p className="phen-card-tw-py-comment-section phen-card-tw-pl-4 pr_4 phen-card-tw-border-2 phen-card-tw-bg-grayBgTextModal phen-card-tw-text-p-desc phen-card-tw-font-bold">
                 {translationTitle}
               </p>
               {/* showChat */}
-              <div className="h-chatAreaHeight max-w-chatAreaWidth">
+              <div className="phen-card-tw-h-chatAreaHeight phen-card-tw-max-w-chatAreaWidth" style={{height: '300px', overflowX: 'hidden', overFlowY: 'auto'}}>
 
                 <>
                   {
@@ -171,11 +174,11 @@ const CommentsModal = ({
                           {
                             !!cmt && index !== 0 && (<hr />)
                           }
-                          <div className="pt-4 pb-1 px-6 text-crowdsourced my-4 flex flex-col">
-                            <div className="flex justify-between items-center">
-                              <div className="flex items-end">
-                                <div className="font-bold"><span>{capitalizeFirstLetter(cmt?.['user_name'])}</span> {" "} <span className="text-grayTimeStampComment font-normal ml-2">{cmt?.['updated_humanTime']}</span></div>
-                                <div className="ml-6 pl-6 h-8 border-l-2 border-black font-normal inline"></div>
+                          <div className="phen-card-tw-pt-4 phen-card-tw-pb-1 phen-card-tw-px-6 phen-card-tw-text-crowdsourced phen-card-tw-my-4 phen-card-tw-flex phen-card-tw-flex-col">
+                            <div className="phen-card-tw-flex phen-card-tw-justify-between phen-card-tw-items-center">
+                              <div className="phen-card-tw-flex phen-card-tw-items-end">
+                                <div className="phen-card-tw-font-bold"><span>{capitalizeFirstLetter(cmt?.['user_name'])}</span> {" "} <span className="phen-card-tw-text-grayTimeStampComment phen-card-tw-font-normal phen-card-tw-ml-2">{cmt?.['updated_humanTime']}</span></div>
+                                <div className="phen-card-tw-ml-6 phen-card-tw-pl-6 phen-card-tw-h-8 phen-card-tw-border-l-2 phen-card-tw-border-black phen-card-tw-font-normal phen-card-tw-inline"></div>
                                 <ThumbUp
                                   cid={cmtId}
                                   gid={gid}
@@ -189,7 +192,7 @@ const CommentsModal = ({
                                 !!cmt?.['isAuthor'] && <EditButton src={edit2} onClick={openEditCommentModalHandle(cmt)}/>
                               }
                             </div>
-                            <p className="my-4 pt-1 pb-4">{cmt?.['comment_text']}</p>
+                            <p className="phen-card-tw-my-4 phen-card-tw-pt-1 phen-card-tw-pb-4">{cmt?.['comment_text']}</p>
                           </div>
                         </>
                       )
@@ -204,14 +207,14 @@ const CommentsModal = ({
                 <input
                   placeholder={lang === 'fi' ? finalTranslations?.name?.fi : finalTranslations?.name?.en}
                   style={{
-                    fontSize: "1.41rem",
+                    fontSize: "14.1px",
                     color: "121212",
                     width: "100%",
-                    height: "4.4rem",
-                    marginBottom: "0.5rem",
-                    marginTop: "2.5rem",
+                    height: "44px",
+                    marginBottom: "5px",
+                    marginTop: "25px",
                     border: "1px solid lightgray",
-                    paddingLeft: "1.1rem",
+                    paddingLeft: "11px",
                   }}
                   onChange={handleChangeInputInput}
                   value={valueInputName}
@@ -226,24 +229,24 @@ const CommentsModal = ({
                   // placeholder={"Message *"}
                   placeholder={lang === 'fi' ? `${finalTranslations?.message?.fi} *` : `${finalTranslations?.message?.en} *`}
                   style={{
-                    fontSize: "1.41rem",
+                    fontSize: "14.1px",
                     color: "121212",
                     width: "100%",
-                    height: "7.6rem",
-                    margin: "1.5rem 0",
+                    height: "76px",
+                    margin: "15px 0",
                   }}
                 />
-                <div className="flex justify-between">
+                <div className="phen-card-tw-flex phen-card-tw-justify-between">
                   <div className="">
                     <button
-                      className="btn btn-lg btn-primary text-p-desc"
+                      className="btn btn-sm btn-primary phen-card-tw-text-p-desc"
                       onClick={commentsModalSubmit}
                     >
                       {lang === 'fi' ? finalTranslations?.submitCommentModal?.fi : finalTranslations?.submitCommentModal?.en}
                     </button>
                     <button
                       onClick={commentsModalClose}
-                      className="btn btn-lg btn-plain text-p-desc"
+                      className="btn btn-sm btn-plain phen-card-tw-text-p-desc"
                     >
                       {lang === 'fi' ? finalTranslations?.cancel?.fi.toUpperCase() : finalTranslations?.cancel?.en.toUpperCase()}
                     </button>
@@ -251,7 +254,7 @@ const CommentsModal = ({
                   <label
                     htmlFor="example1"
                     style={{
-                      fontSize: "1.25rem",
+                      fontSize: "12.5px",
                       color: "#000",
                       marginBottom: 0,
                     }}

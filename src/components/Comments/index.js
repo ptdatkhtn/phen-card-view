@@ -85,30 +85,30 @@ const Comments = ({gid, rid, pid, lang, phenomenon}) => {
   console.log(44499, opportunitiesCmts)
   return (
     <>
-      <div className="mt-8">
-        <h3 className="text-h3-title font-bold mb_4">{lang === 'fi' ? finalTranslations?.commenting?.fi : finalTranslations?.commenting?.en}</h3>
+      <div className="phen-card-tw-mt-6">
+        <h3 className="phen-card-tw-text-h3-title phen-card-tw-font-bold mb_4">{lang === 'fi' ? finalTranslations?.commenting?.fi : finalTranslations?.commenting?.en}</h3>
         <div>
-          <div className="bg-lightgray flex items-center justify-between py-comment-section pr_4 pl-6 border-white border-solid border-b-2 text-crowdsourced">
-            <p className="font-bold text-p-desc">{lang === 'fi' ? finalTranslations?.opportunitiesCommentSection?.fi : finalTranslations?.opportunitiesCommentSection?.en}</p>
+          <div className="phen-card-tw-bg-lightgray phen-card-tw-flex phen-card-tw-items-center phen-card-tw-justify-between phen-card-tw-py-comment-section pr_4 phen-card-tw-pl-4 phen-card-tw-border-white phen-card-tw-border-solid phen-card-tw-border-b-2 phen-card-tw-text-crowdsourced">
+            <p className="phen-card-tw-font-bold phen-card-tw-text-p-desc">{lang === 'fi' ? finalTranslations?.opportunitiesCommentSection?.fi : finalTranslations?.opportunitiesCommentSection?.en}</p>
             <p
-              className="text-blue font-medium cursor-pointer flex items-center pr_3"
+              className="phen-card-tw-text-blue phen-card-tw-font-medium phen-card-tw-cursor-pointer phen-card-tw-flex phen-card-tw-items-center pr_3"
               onClick={() => {
                   setCommentTopic('Opportunities');
                   openCommentsModalHandle();
               }}
             >
-              <span className="af-custom-chat text-chat-icon mr-3 mt-1"></span>
+              <span className="af-custom-chat phen-card-tw-text-chat-icon phen-card-tw-mr-3 phen-card-tw-mt-1"></span>
               {lang === 'fi' ? finalTranslations?.commentViewBtn?.fi : finalTranslations?.commentViewBtn?.en}
             </p>
           </div>
           <>
               {
                 opportunitiesCmts && !!opportunitiesCmts?.length && (
-                  <div className="pt_4 px-6 text-crowdsourced">
-                    <p className="font-bold">
+                  <div className="pt_4 phen-card-tw-px-4 phen-card-tw-text-crowdsourced">
+                    <p className="phen-card-tw-font-bold">
                       {capitalizeFirstLetter(opportunitiesCmts[opportunitiesCmts?.length - 1]?.['user_name'])} 
                         {" "} 
-                          <span className="text-grayTimeStampComment font-normal ml-2">{opportunitiesCmts[opportunitiesCmts?.length - 1]['updated_humanTime']}</span> </p>
+                          <span className="phen-card-tw-text-grayTimeStampComment phen-card-tw-font-normal phen-card-tw-ml-2">{opportunitiesCmts[opportunitiesCmts?.length - 1]['updated_humanTime']}</span> </p>
                     <p className="pt_4 pb_4 ">{opportunitiesCmts[opportunitiesCmts?.length - 1]?.['comment_text']}</p>
                   </div>
                 )
@@ -116,16 +116,16 @@ const Comments = ({gid, rid, pid, lang, phenomenon}) => {
           </>
 
 
-          <div className="bg-lightgray flex items-center justify-between py-comment-section pr_4 pl-6 border-white border-solid border-b-2 text-crowdsourced">
-            <p className="text-p-desc font-bold">{lang === 'fi' ? finalTranslations?.threatsCommentSection?.fi : finalTranslations?.threatsCommentSection?.en}</p>
+          <div className="phen-card-tw-bg-lightgray phen-card-tw-flex phen-card-tw-items-center phen-card-tw-justify-between phen-card-tw-py-comment-section phen-card-tw-pl-4 phen-card-tw-border-white phen-card-tw-border-solid phen-card-tw-border-b-2 phen-card-tw-text-crowdsourced" style={{paddingRight: '16px'}}>
+            <p className="phen-card-tw-text-p-desc phen-card-tw-font-bold">{lang === 'fi' ? finalTranslations?.threatsCommentSection?.fi : finalTranslations?.threatsCommentSection?.en}</p>
             <p
-              className="text-blue font-medium cursor-pointer flex items-center pr_3"
+              className="phen-card-tw-text-blue phen-card-tw-font-medium phen-card-tw-cursor-pointer phen-card-tw-flex phen-card-tw-items-center phen-card-tw-pr_3"
               onClick={() =>{
                 setCommentTopic('Threats');
                 openCommentsModalHandle();
               }}
             >
-              <span className="af-custom-chat text-chat-icon mr-3 mt-1"></span>
+              <span className="af-custom-chat phen-card-tw-text-chat-icon phen-card-tw-mr-3 phen-card-tw-mt-1"></span>
               {lang === 'fi' ? finalTranslations?.commentViewBtn?.fi : finalTranslations?.commentViewBtn?.en}
             </p>
           </div>
@@ -133,11 +133,11 @@ const Comments = ({gid, rid, pid, lang, phenomenon}) => {
           <>
               {
                 threatsCmts && !!threatsCmts?.length && (
-                  <div className="pt_4 px-6 text-crowdsourced">
-                    <p className="font-bold">
+                  <div className="pt_4 phen-card-tw-px-4 phen-card-tw-text-crowdsourced">
+                    <p className="phen-card-tw-font-bold">
                       {capitalizeFirstLetter(threatsCmts[threatsCmts?.length - 1]?.['user_name'])} 
                         {" "} 
-                        <span className="text-grayTimeStampComment font-normal ml-2">{threatsCmts[threatsCmts?.length - 1]['updated_humanTime']}</span> </p>
+                        <span className="phen-card-tw-text-grayTimeStampComment phen-card-tw-font-normal phen-card-tw-ml-2">{threatsCmts[threatsCmts?.length - 1]['updated_humanTime']}</span> </p>
                     <p className="pt_4 pb_4 ">{threatsCmts[threatsCmts?.length - 1]?.['comment_text']}</p>
                   </div>
                 )
@@ -146,27 +146,27 @@ const Comments = ({gid, rid, pid, lang, phenomenon}) => {
 
 
 
-          <div className="bg-lightgray flex items-center justify-between py-comment-section pr_4 pl-6 border-white border-solid border-b-2 text-crowdsourced">
-            <p className="text-p-desc font-bold">{lang === 'fi' ? finalTranslations?.actionsCommentSection?.fi : finalTranslations?.actionsCommentSection?.en}</p>
+          <div className="phen-card-tw-bg-lightgray phen-card-tw-flex phen-card-tw-items-center phen-card-tw-justify-between phen-card-tw-py-comment-section pr_4 phen-card-tw-pl-4 phen-card-tw-border-white phen-card-tw-border-solid phen-card-tw-border-b-2 phen-card-tw-text-crowdsourced">
+            <p className="phen-card-tw-text-p-desc phen-card-tw-font-bold">{lang === 'fi' ? finalTranslations?.actionsCommentSection?.fi : finalTranslations?.actionsCommentSection?.en}</p>
             <p
-              className="text-blue font-medium cursor-pointer flex items-center pr_3"
+              className="phen-card-tw-text-blue phen-card-tw-font-medium phen-card-tw-cursor-pointer phen-card-tw-flex phen-card-tw-items-center pr_3"
               onClick={() => {
                 setCommentTopic('Actions');
                 openCommentsModalHandle();
               }}
             >
-              <span className="af-custom-chat text-chat-icon mr-3 mt-1"></span>
+              <span className="af-custom-chat phen-card-tw-text-chat-icon phen-card-tw-mr-3 phen-card-tw-mt-1"></span>
               {lang === 'fi' ? finalTranslations?.commentViewBtn?.fi : finalTranslations?.commentViewBtn?.en}
             </p>
           </div>
           <>
               {
                 actionsCmts && !!actionsCmts?.length && (
-                  <div className="pt_4 px-6 text-crowdsourced">
-                    <p className="font-bold">
+                  <div className="pt_4 phen-card-tw-px-4 phen-card-tw-text-crowdsourced">
+                    <p className="phen-card-tw-font-bold">
                       {capitalizeFirstLetter(actionsCmts[actionsCmts?.length - 1]?.['user_name'])} 
                         {" "} 
-                        <span className="text-grayTimeStampComment font-normal ml-2">{actionsCmts[actionsCmts?.length - 1]['updated_humanTime']}</span> </p>
+                        <span className="phen-card-tw-text-grayTimeStampComment phen-card-tw-font-normal phen-card-tw-ml-2">{actionsCmts[actionsCmts?.length - 1]['updated_humanTime']}</span> </p>
                     <p className="pt_4 pb_4 ">{actionsCmts[actionsCmts?.length - 1]?.['comment_text']}</p>
                   </div>
                 )

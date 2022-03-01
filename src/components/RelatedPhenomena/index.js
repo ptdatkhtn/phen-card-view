@@ -27,9 +27,9 @@ const RelatedPhenomena = ({ phenomenon, gid, rid, pid, lang }) => {
 
   return (
         !!phenomenon && !isEmpty(phenomenon) && phenomenon["related-phenomena-data"] && phenomenon["related-phenomena-data"].length > 0 ? (
-      <div className="my-8">
-        <h2 className="text-h2-title font-bold mb-7">{lang === 'fi' ? finalTranslations?.relatedPhenomenaSection?.fi : finalTranslations?.relatedPhenomenaSection?.en}</h2>
-        <div className="pl-10">
+      <div className="phen-card-tw-my-6">
+        <h2 className="phen-card-tw-text-h2-title phen-card-tw-font-bold phen-card-tw-mb-5">{lang === 'fi' ? finalTranslations?.relatedPhenomenaSection?.fi : finalTranslations?.relatedPhenomenaSection?.en}</h2>
+        <div className="">
           {phenomenon['related-phenomena-data'].map(phe => {
               phenomenaTypesData && phenomenaTypesData?.map(type => {
                 if(type.id === phe.content.type) {
@@ -44,16 +44,16 @@ const RelatedPhenomena = ({ phenomenon, gid, rid, pid, lang }) => {
                   href="#abc"
                   rel="noreferrer noopener"
                   target="_blank"
-                  className="flex overflow-hidden break-words mb-2 hover:no-underline"
+                  className="phen-card-tw-flex phen-card-tw-overflow-hidden phen-card-tw-break-words phen-card-tw-mb-2 hover:phen-card-tw-no-underline"
                   key={phe.id}
                 >
                   { 
-                    phenomenon?.['color'] === 'none' && <div className="w-8 h-8 text-center"><div className={`mt-0.5 icon-issue ${iconClassName}`}></div></div>
+                    phenomenon?.['color'] === 'none' && <div className="phen-card-tw-w-8 phen-card-tw-h-8 phen-card-tw-text-center"><div className={`phen-card-tw-mt-0.5 icon-issue ${iconClassName}`}></div></div>
                   }
                   {
-                    phenomenon?.['color'] !== 'none' && <div className="w-8 h-8 text-center" ><div className={`mt-1 w-6 h-6 rounded-full mr-1 ml-1`} style={{backgroundColor: `${backgroundColor}`}}></div></div>
+                    phenomenon?.['color'] !== 'none' && <div className="phen-card-tw-w-8 phen-card-tw-h-8 phen-card-tw-text-center" ><div className={`phen-card-tw-mt-1 w_h_16 phen-card-tw-rounded-full phen-card-tw-mr-1 phen-card-tw-ml-6px`} style={{backgroundColor: `${backgroundColor}`}}></div></div>
                   } 
-                <h4 className="ml-3 text-h4-title font-bold">{phe.content.title}</h4>
+                <h4 className="phen-card-tw-ml-2 phen-card-tw-mt-0.5 phen-card-tw-text-h4-title phen-card-tw-font-bold">{phe.content.title}</h4>
                 </a>
               )
           })}

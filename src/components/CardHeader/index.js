@@ -11,26 +11,26 @@ const CardHeader = ({gid, rid, pid, phenomenon, lang}) => {
   return (
     (phenomenon && !isEmpty(phenomenon)) ? (
     <>
-      <h1 className="mt-2 mb-12 text-h1-title font-bold">
+      <h1 className="phen-card-tw-mt-5px phen-card-tw-mb-8 phen-card-tw-text-h1-title phen-card-tw-font-bold">
         {phenomenon?.short_title}
       </h1>
-      <div className="my-6 flex justify-between">
-        <div className="flex">
+      <div className="phen-card-tw-my-4 phen-card-tw-flex phen-card-tw-justify-between">
+        <div className="phen-card-tw-flex">
           {
-             phenomenon?.['color'] === 'none' && <div className={`mt-1 icon-issue ${iconClassName}`}></div>
+             phenomenon?.['color'] === 'none' && <div className={`phen-card-tw-mt-2.5px icon-issue ${iconClassName}`}></div>
           }
           {
-            phenomenon?.['color'] !== 'none' && <div className='mt-2 w-6 h-6 rounded-full' style={{backgroundColor: `${backgroundColor}`}}></div>
+            phenomenon?.['color'] !== 'none' && <div className='phen-card-tw-mt-2 w_h_16 phen-card-tw-rounded-full' style={{backgroundColor: `${backgroundColor}`}}></div>
           }
-          <p className="ml-3 text-field-text">{translationTitle}</p>
-          <span className="mx-6 mt-2 border-l-2 border-black h-6"></span>
+          <p className="phen-card-tw-mt-4px phen-card-tw-ml-5px phen-card-tw-text-field-text">{phenomenon?.['color'] === 'none' ? translationTitle : phenomenon?.['content-type-title']}</p>
+          <span className="phen-card-tw-mx-3 phen-card-tw-mt-2 phen-card-tw-border-l-2 phen-card-tw-border-black phen-card-tw-h-4"></span>
           <div>
-            {phenomenon?.time_range && <p className="text-field-text">{`${phenomenon?.time_range?.min}-${phenomenon?.time_range?.max}`}</p>}
-            {phenomenon?.crowdsourced && <p className="text-crowdsourced">{lang === 'fi' ? finalTranslations?.crowdSourced?.fi : finalTranslations?.crowdSourced?.en} {phenomenon?.crowdsourced}</p>}
+            {phenomenon?.time_range && <p className="phen-card-tw-text-field-text">{`${phenomenon?.time_range?.min}-${phenomenon?.time_range?.max}`}</p>}
+            {phenomenon?.crowdsourced && <p className="phen-card-tw-text-crowdsourced">{lang === 'fi' ? finalTranslations?.crowdSourced?.fi : finalTranslations?.crowdSourced?.en} {phenomenon?.crowdsourced}</p>}
           </div>
         </div>
 
-        <div className="w-32 flex justify-center">
+        <div className="phen-card-tw-w-32 phen-card-tw-flex phen-card-tw-justify-center">
           {
             !!rid && (
               <Voting gid={gid} rid={rid} pid={pid}/>
@@ -38,7 +38,7 @@ const CardHeader = ({gid, rid, pid, phenomenon, lang}) => {
           }
         </div>
       </div>
-      <p className="mb-6 text-lead-text font-bold" dangerouslySetInnerHTML={{__html: phenomenon?.summary}}>
+      <p className="phen-card-tw-mb-4 phen-card-tw-text-lead-text phen-card-tw-font-bold" dangerouslySetInnerHTML={{__html: phenomenon?.summary}}>
       </p>
     </>
     ) : null

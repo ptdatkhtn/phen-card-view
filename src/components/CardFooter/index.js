@@ -10,18 +10,18 @@ const CardFooter = ({
     const UserEditted = `Futures Platform`
 
     return (
-        <div className="mt-16 mb-12 border-t-2 border-lightgray pl-10">
-            <p className="text-p-desc italic my-6 text-black">
+        <div className="phen-card-tw-mt-16 phen-card-tw-mb-12 phen-card-tw-border-t-2 phen-card-tw-border-lightgray">
+            <p className="phen-card-tw-text-p-desc phen-card-tw-italic phen-card-tw-my-4 phen-card-tw-text-black">
                 {/* Edited 27.05.2021 by Futures Platform Päivitetty 06.02.2022 - Anton Kupias*/}
                 {EdittedTitle}{' '}{DateEditted}{' - '}{UserEditted}
             </p>
             <div>
-                <a href="#" className="border-blue text-meta border-w-0_5 rounded-full py-2 px-4 text-center text-blue hover:no-underline">
+                <a href="google.com" className="phen-card-tw-border-blue phen-card-tw-text-meta border-w-0_5 phen-card-tw-rounded-full phen-card-tw-py-2 phen-card-tw-px-4 phen-card-tw-text-center phen-card-tw-text-blue hover:phen-card-tw-no-underline hover:phen-card-tw-cursor-pointer">
                     {/* <FontAwesomeIcon
                         icon={faPencilAlt}
                         className="text-p-desc mr-2"
                     /> */}
-                    <span className="af-custom-edit  mr-2"></span>
+                    <span className="af-custom-edit phen-card-tw-mr-2"></span>
                     {/* EDIT PHENOMENON */}
                     {lang === 'fi' ? finalTranslations?.editPhenomenon?.fi.toUpperCase() : finalTranslations?.editPhenomenon?.en.toUpperCase()}
                 </a>

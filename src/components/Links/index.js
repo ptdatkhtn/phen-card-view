@@ -2,7 +2,7 @@ import React from "react";
 import { isEmpty } from "../../helpers/utils";
 
 const Links = ({ phenomenon }) => {
-  return phenomenon?.links && !isEmpty(phenomenon) ? (
+  return phenomenon?.links?.length && !isEmpty(phenomenon) ? (
     <div className="phen-card-tw-mt-6">
       <h4 className="phen-card-tw-text-links-title phen-card-tw-font-bold phen-card-tw-mb-4">Links</h4>
       {phenomenon?.links?.map((link) => (

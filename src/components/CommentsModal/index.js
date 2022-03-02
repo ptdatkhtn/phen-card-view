@@ -11,6 +11,7 @@ import { ACTIONS } from '../../store/Actions'
 import {DataContext} from '../../store/GlobalState'
 import {commentingApi} from '../../helpers/commentingFetcher'
 import { uuid } from 'uuidv4';
+import {getUserRoles, getVisitorUid} from '@sangre-fp/connectors/session'
 
 const GlobalStyle = createGlobalStyle`
   .ReactModal__Overlay--after-open {
@@ -144,6 +145,25 @@ const CommentsModal = ({
       setValueInputName(() => tempInputValue);
     }
 
+    const getFp_Vid_fromLocalStorage = localStorage.getItem('fp-vid')
+    const userRoles = getUserRoles()
+    let isAdminUser = false
+    for (const [key, value] of Object.entries(userRoles[0])) {
+      console.log(`${key}: ${value}`);
+      if ( value?.includes("authenticated user") 
+        || value?.includes("administrator") 
+        || value?.includes("alternative futures") 
+        || value?.includes("fp admin") 
+        || value?.includes("fp manager")
+        || value?.includes("superuser") 
+        || value?.includes("fp editor") 
+        || value?.includes("fp csm") ) {
+          isAdminUser = true
+        }
+    }
+const isVisitorFP = getVisitorUid()
+const isShownInputNameField = !!getFp_Vid_fromLocalStorage || !!isVisitorFP || !!isAdminUser
+console.log('getUserRoles, getVisitorUid', getUserRoles(), getVisitorUid(), isAdminUser)
     return (
       <>
         <GlobalStyle />
@@ -177,7 +197,7 @@ const CommentsModal = ({
                           <div className="phen-card-tw-pt-4 phen-card-tw-pb-1 phen-card-tw-px-6 phen-card-tw-text-crowdsourced phen-card-tw-my-4 phen-card-tw-flex phen-card-tw-flex-col">
                             <div className="phen-card-tw-flex phen-card-tw-justify-between phen-card-tw-items-center">
                               <div className="phen-card-tw-flex phen-card-tw-items-end">
-                                <div className="phen-card-tw-font-bold"><span>{capitalizeFirstLetter(cmt?.['user_name'])}</span> {" "} <span className="phen-card-tw-text-grayTimeStampComment phen-card-tw-font-normal phen-card-tw-ml-2">{cmt?.['updated_humanTime']}</span></div>
+                                <div className="phen-card-tw-font-bold"><span>{capitalizeFirstLetter(!!cmt?.['comment_name'] ?cmt?.['comment_name'] : cmt?.['user_name'] )}</span> {" "} <span className="phen-card-tw-text-grayTimeStampComment phen-card-tw-font-normal phen-card-tw-ml-2">{cmt?.['updated_humanTime']}</span></div>
                                 <div className="phen-card-tw-ml-6 phen-card-tw-pl-6 phen-card-tw-h-8 phen-card-tw-border-l-2 phen-card-tw-border-black phen-card-tw-font-normal phen-card-tw-inline"></div>
                                 <ThumbUp
                                   cid={cmtId}
@@ -204,21 +224,25 @@ const CommentsModal = ({
             </div>
             <div>
               <div className="form-group">
-                <input
-                  placeholder={lang === 'fi' ? finalTranslations?.name?.fi : finalTranslations?.name?.en}
-                  style={{
-                    fontSize: "14.1px",
-                    color: "121212",
-                    width: "100%",
-                    height: "44px",
-                    marginBottom: "5px",
-                    marginTop: "25px",
-                    border: "1px solid lightgray",
-                    paddingLeft: "11px",
-                  }}
-                  onChange={handleChangeInputInput}
-                  value={valueInputName}
-                />
+                {
+                  (isShownInputNameField) && (
+                    <input
+                      placeholder={lang === 'fi' ? finalTranslations?.name?.fi : finalTranslations?.name?.en}
+                      style={{
+                        fontSize: "14.1px",
+                        color: "121212",
+                        width: "100%",
+                        height: "44px",
+                        marginBottom: "5px",
+                        marginTop: "25px",
+                        border: "1px solid lightgray",
+                        paddingLeft: "11px",
+                      }}
+                      onChange={handleChangeInputInput}
+                      value={valueInputName}
+                    />
+                  )
+                }
                 <textarea
                   onChange={handleChangeInput}
                   maxLength="1000"

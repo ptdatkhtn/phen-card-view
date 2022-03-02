@@ -106,7 +106,11 @@ const Comments = ({gid, rid, pid, lang, phenomenon}) => {
                 opportunitiesCmts && !!opportunitiesCmts?.length && (
                   <div className="pt_4 phen-card-tw-px-4 phen-card-tw-text-crowdsourced">
                     <p className="phen-card-tw-font-bold">
-                      {capitalizeFirstLetter(opportunitiesCmts[opportunitiesCmts?.length - 1]?.['user_name'])} 
+                      {capitalizeFirstLetter(
+                        !!opportunitiesCmts[opportunitiesCmts?.length - 1]?.['comment_name'] ? 
+                        opportunitiesCmts[opportunitiesCmts?.length - 1]?.['comment_name'] :
+                        opportunitiesCmts[opportunitiesCmts?.length - 1]?.['user_name']
+                      )} 
                         {" "} 
                           <span className="phen-card-tw-text-grayTimeStampComment phen-card-tw-font-normal phen-card-tw-ml-2">{opportunitiesCmts[opportunitiesCmts?.length - 1]['updated_humanTime']}</span> </p>
                     <p className="pt_4 pb_4 ">{opportunitiesCmts[opportunitiesCmts?.length - 1]?.['comment_text']}</p>
@@ -135,7 +139,9 @@ const Comments = ({gid, rid, pid, lang, phenomenon}) => {
                 threatsCmts && !!threatsCmts?.length && (
                   <div className="pt_4 phen-card-tw-px-4 phen-card-tw-text-crowdsourced">
                     <p className="phen-card-tw-font-bold">
-                      {capitalizeFirstLetter(threatsCmts[threatsCmts?.length - 1]?.['user_name'])} 
+                      {capitalizeFirstLetter(!!opportunitiesCmts[opportunitiesCmts?.length - 1]?.['comment_name'] ? 
+                        opportunitiesCmts[opportunitiesCmts?.length - 1]?.['comment_name'] :
+                        opportunitiesCmts[opportunitiesCmts?.length - 1]?.['user_name'])} 
                         {" "} 
                         <span className="phen-card-tw-text-grayTimeStampComment phen-card-tw-font-normal phen-card-tw-ml-2">{threatsCmts[threatsCmts?.length - 1]['updated_humanTime']}</span> </p>
                     <p className="pt_4 pb_4 ">{threatsCmts[threatsCmts?.length - 1]?.['comment_text']}</p>
@@ -164,7 +170,9 @@ const Comments = ({gid, rid, pid, lang, phenomenon}) => {
                 actionsCmts && !!actionsCmts?.length && (
                   <div className="pt_4 phen-card-tw-px-4 phen-card-tw-text-crowdsourced">
                     <p className="phen-card-tw-font-bold">
-                      {capitalizeFirstLetter(actionsCmts[actionsCmts?.length - 1]?.['user_name'])} 
+                      {capitalizeFirstLetter(!!opportunitiesCmts[opportunitiesCmts?.length - 1]?.['comment_name'] ? 
+                        opportunitiesCmts[opportunitiesCmts?.length - 1]?.['comment_name'] :
+                        opportunitiesCmts[opportunitiesCmts?.length - 1]?.['user_name'])} 
                         {" "} 
                         <span className="phen-card-tw-text-grayTimeStampComment phen-card-tw-font-normal phen-card-tw-ml-2">{actionsCmts[actionsCmts?.length - 1]['updated_humanTime']}</span> </p>
                     <p className="pt_4 pb_4 ">{actionsCmts[actionsCmts?.length - 1]?.['comment_text']}</p>

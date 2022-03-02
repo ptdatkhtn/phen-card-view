@@ -1,9 +1,9 @@
-.VotingLike_Wrapper {
+.phen-card-app .VotingLike_Wrapper {
   width: 43px;
   display: flex;
   align-items: center;
 }
-.likeAmount {
+.phen-card-app .likeAmount {
   margin-left: 4px;
 }
 .phen-card-app .ThumbUp_Btn {

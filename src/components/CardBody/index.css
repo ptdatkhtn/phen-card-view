@@ -1,35 +1,35 @@
-#card-body {
+.phen-card-app #card-body {
     @apply phen-card-tw-mt-6;
 }
 
-#card-body h2 {
+.phen-card-app #card-body h2 {
     font-size: 26px;
     font-weight: 700;
     margin-bottom: 12.6px;
     /* @apply phen-card-tw-text-h2-title phen-card-tw-font-bold phen-card-tw-mb-4; */
 }
 
-#card-body h3 {
+.phen-card-app #card-body h3 {
     font-size: 20px;
     font-weight: 700;
     margin-bottom: 12.6px;
 }
 
-#card-body p {
+.phen-card-app #card-body p {
     font-size: 14px;
     @apply phen-card-tw-mb-4;
 }
 
-#card-body ul {
+.phen-card-app #card-body ul {
     @apply phen-card-tw-list-disc phen-card-tw-pl-6;
 }
 
-#card-body li {
+.phen-card-app #card-body li {
     font-size: 14px;
     @apply phen-card-tw-mb-2;
 }
 
-#card-body li a {
+.phen-card-app #card-body li a {
     @apply phen-card-tw-text-blue phen-card-tw-overflow-hidden phen-card-tw-break-words hover:phen-card-tw-underline;
 }
 

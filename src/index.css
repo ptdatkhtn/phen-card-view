@@ -8,7 +8,7 @@
     color: #333;
 }
 
-.phen-card-app .container, .container-fullwidth,
+.phen-card-app .container, .phen-card-app .container-fullwidth,
 .phen-card-app .container-fullwidth {
     min-width: unset;
     max-width: unset;
@@ -62,40 +62,40 @@
     text-decoration: none;
 }
 
-.mb_4 {
+.phen-card-app .mb_4 {
     margin-bottom: 10px
 }
 
-.mb_5{
+.phen-card-app .mb_5{
     margin-bottom: 12.6px;
 
 }
 
-.pr_4 {
+.phen-card-app .pr_4 {
     padding-right: 10px;
 }
 
-.pb_4 {
+.phen-card-app .pb_4 {
     padding-bottom: 10px;
 }
 
-.pt_4 {
+.phen-card-app .pt_4 {
     padding-top: 10px;
 }
 
-.pb_2 {
+.phen-card-app .pb_2 {
     padding-bottom: 5px;
 }
 
-.pr_3 {
+.phen-card-app .pr_3 {
     padding-right: 7px;
 }
 
-.border-w-0_5 {
+.phen-card-app .border-w-0_5 {
     border-width: 0.5px
 }
 
-.w_h_16 {
+.phen-card-app .w_h_16 {
     width: 16px;
     height:16px;
 }

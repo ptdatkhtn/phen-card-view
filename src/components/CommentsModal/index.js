@@ -25,6 +25,7 @@ const GlobalStyle = createGlobalStyle`
     background-color: #e8ebeb !important;
     margin: 0 auto;
     max-width: 600px;
+    font-family: L10;
 
     font-size: 1.6rem;
     // width: 70%;
@@ -175,10 +176,10 @@ console.log('getUserRoles, getVisitorUid', getUserRoles(), getVisitorUid(), isAd
           style={paddingModalStyles}
         >
           <div className="confirmation-modal-content phen-card-tw-px-12 phen-card-tw-pt-3 phen-card-tw-pb-6">
-            <h1 className="phen-card-tw-text-h1-modal-title phen-card-tw-font-bold mb_5">{phenomenon?.short_title}</h1>
+            <h1 className="phen-card-tw-text-h1-modal-title phen-card-tw-font-bold" style={{marginBottom: '12.6px'}}>{phenomenon?.short_title}</h1>
             {/* messageModal */}
             <div className="phen-card-tw-mt-2">
-              <p className="phen-card-tw-py-comment-section phen-card-tw-pl-4 pr_4 phen-card-tw-border-2 phen-card-tw-bg-grayBgTextModal phen-card-tw-text-p-desc phen-card-tw-font-bold">
+              <p className="phen-card-tw-py-comment-section phen-card-tw-pl-4 phen-card-tw-border-2 phen-card-tw-bg-grayBgTextModal phen-card-tw-text-p-desc phen-card-tw-font-bold" style={{paddingRight: '10px'}}>
                 {translationTitle}
               </p>
               {/* showChat */}
@@ -194,7 +195,7 @@ console.log('getUserRoles, getVisitorUid', getUserRoles(), getVisitorUid(), isAd
                           {
                             !!cmt && index !== 0 && (<hr />)
                           }
-                          <div className="phen-card-tw-pt-4 phen-card-tw-pb-1 phen-card-tw-px-6 phen-card-tw-text-crowdsourced phen-card-tw-my-4 phen-card-tw-flex phen-card-tw-flex-col">
+                          <div className="phen-card-tw-pt-3 phen-card-tw-pb-1 phen-card-tw-px-4 phen-card-tw-text-crowdsourced phen-card-tw-my-3 phen-card-tw-flex phen-card-tw-flex-col">
                             <div className="phen-card-tw-flex phen-card-tw-justify-between phen-card-tw-items-center">
                               <div className="phen-card-tw-flex phen-card-tw-items-end">
                                 <div className="phen-card-tw-font-bold"><span>{capitalizeFirstLetter(!!cmt?.['comment_name'] ?cmt?.['comment_name'] : cmt?.['user_name'] )}</span> {" "} <span className="phen-card-tw-text-grayTimeStampComment phen-card-tw-font-normal phen-card-tw-ml-2">{cmt?.['updated_humanTime']}</span></div>
@@ -212,7 +213,7 @@ console.log('getUserRoles, getVisitorUid', getUserRoles(), getVisitorUid(), isAd
                                 !!cmt?.['isAuthor'] && <EditButton src={edit2} onClick={openEditCommentModalHandle(cmt)}/>
                               }
                             </div>
-                            <p className="phen-card-tw-my-4 phen-card-tw-pt-1 phen-card-tw-pb-4">{cmt?.['comment_text']}</p>
+                            <p className="phen-card-tw-my-2 phen-card-tw-pt-1 phen-card-tw-pb-3">{cmt?.['comment_text']}</p>
                           </div>
                         </>
                       )

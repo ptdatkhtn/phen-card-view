@@ -1,18 +1,18 @@
-.phen-card-app .VotingLike_Wrapper {
+.VotingLike_Wrapper {
   width: 43px;
   display: flex;
   align-items: center;
 }
-.phen-card-app .likeAmount {
+.likeAmount {
   margin-left: 4px;
 }
-.phen-card-app .ThumbUp_Btn {
+.ThumbUp_Btn {
   color: #808080;
 }
 
-.phen-card-app .ThumbUp_Btn:hover {
+.ThumbUp_Btn:hover {
   color: black;
 }
-.phen-card-app .ThumbUp_Btn.active {
+.ThumbUp_Btn.active {
   color: black;
 }

@@ -1,15 +1,15 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
-
-
 .phen-card-app {
-    @apply phen-card-tw-font-L10;
+    @tailwind base;
+    @tailwind components;
+    @tailwind utilities;
+    
     color: #333;
+    font-family: 'L10';
 }
 
 .phen-card-app .container, .phen-card-app .container-fullwidth,
 .phen-card-app .container-fullwidth {
+    @apply phen-card-tw-font-L10;
     min-width: unset;
     max-width: unset;
 

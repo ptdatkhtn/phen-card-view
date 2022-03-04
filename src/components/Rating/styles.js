@@ -43,3 +43,7 @@ export const RatingItems = styled.div`
     }
 `
 
+export const H3RatingTitle = styled.h3`
+  font-size: 20px;
+  font-weight: 700;
+`

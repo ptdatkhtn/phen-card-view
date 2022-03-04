@@ -29,8 +29,8 @@ const Slider = ({
       </RatingHeader>
       <RatingItem>
         <RatingSliderScale>
-          <SliderScaleMin className="phen-card-tw-text-body-text">{leftValue}</SliderScaleMin>
-          <SliderScaleMax className="phen-card-tw-text-body-text">{rightValue}</SliderScaleMax>
+          <SliderScaleMin>{leftValue}</SliderScaleMin>
+          <SliderScaleMax>{rightValue}</SliderScaleMax>
         </RatingSliderScale>
         <RatingSlider
           className={!isSliding ? "inactive" : ""}

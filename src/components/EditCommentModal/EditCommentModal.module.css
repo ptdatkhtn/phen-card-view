@@ -1,0 +1,35 @@
+.h3Title {
+    font-size: 22px;
+    color: #121212;
+    font-weight: 700;
+    padding-bottom: 12px;
+}
+
+.textAreaStyle {
+    font-size: 14.1px;
+    color: #121212 !important;
+    width: 100%;
+    height: fit-content!important;
+    min-height: 360px;
+}
+
+.labelTag {
+    font-size: 13px;
+    color: #000;
+    margin-bottom: 0!important;
+}
+
+.modalFormActionsWrapper {
+    display: flex !important;
+    justify-content: space-between !important;
+    padding-top: 0 !important;
+}
+
+.btnStyle {
+    font-size: 16.1px !important;
+    font-weight: 540;
+}
+
+.pl_0 {
+    padding-left: 0;
+} 

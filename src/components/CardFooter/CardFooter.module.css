@@ -1,0 +1,33 @@
+.cardFooterWrapper {
+    margin-top: 56px !important;
+    margin-bottom: 42px !important;
+    border-top: 2px solid;
+    border-color: #e8ebeb;
+}
+
+.footerText {
+    font-size: 13px;
+    font-style: italic;
+    margin: 14px 0 !important;
+    color: black;
+}
+
+.editPhenomenonBtn {
+    border-color: #006998;
+    font-size: 13px;
+    border: 0.5px solid;
+    border-radius: 99px;
+    padding: 7px 14px;
+    text-align: center;
+    color: #006998;
+
+}
+
+.editPhenomenonBtn:hover {
+    cursor: pointer;
+    text-decoration: none;
+}
+
+.pencilIcon {
+    margin-right: 7px !important;
+}

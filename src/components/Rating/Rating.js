@@ -11,6 +11,7 @@ import {
   IconName,
   WidgetHeader,
   RatingItems,
+  H3RatingTitle
 } from "./styles";
 
 const Rating = ({ 
@@ -161,7 +162,7 @@ const Rating = ({
     <>
       <RatingWidget>
         <WidgetHeader>
-          <h3 className="phen-card-tw-text-h3-title phen-card-tw-font-bold mb_5">{lang === 'fi' ? finalTranslations?.rating?.fi : finalTranslations?.rating?.en}</h3>
+          <H3RatingTitle  className="mb_5">{lang === 'fi' ? finalTranslations?.rating?.fi : finalTranslations?.rating?.en}</H3RatingTitle>
           <IconLink>
             <CloseIcon></CloseIcon>
             <IconName onClick={clearRatings}>{lang === 'fi' ? finalTranslations?.clearRatings?.fi : finalTranslations?.clearRatings?.en}</IconName>

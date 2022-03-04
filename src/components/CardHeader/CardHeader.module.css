@@ -1,0 +1,50 @@
+.h1Title {
+    margin-top: 5px !important;
+    margin-bottom: 30px !important;
+    font-size: 32px;
+    font-weight: 700;
+}
+
+.cardHeaderWrapper {
+    margin: 14px 0 !important;
+    display: flex;
+    justify-content: space-between;
+}
+
+.headerWrapper {
+    display: flex;
+}
+
+.phenTitle {
+    margin-top: 4px !important;
+    margin-left: 5px !important;
+    font-size: 15px;
+}
+
+.verticalLine {
+    margin: 8px 10.5px 0 !important;
+    border-left: 2px solid black;
+    height: 14px;
+}
+
+.timeRange {
+    font-size: 15px;
+    margin-bottom: 2px !important;
+}
+
+.crowdsourced {
+    font-size: 12px;
+    margin-bottom: 2px !important;
+}
+
+.votingWrapper {
+    width: 112px;
+    display:flex;
+    justify-content: center;
+}
+
+.summaryData {
+    margin-bottom: 14px !important;
+    font-size: 15.4px;
+    font-weight: 700;
+}

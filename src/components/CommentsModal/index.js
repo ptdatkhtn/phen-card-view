@@ -10,9 +10,10 @@ import {capitalizeFirstLetter} from '../../helpers/utils'
 import { ACTIONS } from '../../store/Actions'
 import {DataContext} from '../../store/GlobalState'
 import {commentingApi} from '../../helpers/commentingFetcher'
+import clsx from "clsx";
 import { uuid } from 'uuidv4';
 import {getUserRoles, getVisitorUid} from '@sangre-fp/connectors/session'
-
+import styles from './CommentsModal.module.css'
 const GlobalStyle = createGlobalStyle`
   .ReactModal__Overlay--after-open {
     background-color: rgba(0,0,0,.77)!important;
@@ -175,15 +176,15 @@ console.log('getUserRoles, getVisitorUid', getUserRoles(), getVisitorUid(), isAd
           ariaHideApp={false}
           style={paddingModalStyles}
         >
-          <div className="confirmation-modal-content phen-card-tw-px-12 phen-card-tw-pt-3 phen-card-tw-pb-6">
-            <h1 className="phen-card-tw-text-h1-modal-title phen-card-tw-font-bold" style={{marginBottom: '12.6px'}}>{phenomenon?.short_title}</h1>
+          <div className={clsx(styles.commentsModalWrapper, 'confirmation-modal-content')}>
+            <h1 className={styles.h1Title}>{phenomenon?.short_title}</h1>
             {/* messageModal */}
-            <div className="phen-card-tw-mt-2">
-              <p className="phen-card-tw-py-comment-section phen-card-tw-pl-4 phen-card-tw-border-2 phen-card-tw-bg-grayBgTextModal phen-card-tw-text-p-desc phen-card-tw-font-bold" style={{paddingRight: '10px'}}>
+            <div className={styles.cmtArea}>
+              <p className={styles.cmtTitle}>
                 {translationTitle}
               </p>
               {/* showChat */}
-              <div className="phen-card-tw-h-chatAreaHeight phen-card-tw-max-w-chatAreaWidth" style={{height: '300px', overflowX: 'hidden', overFlowY: 'auto'}}>
+              <div className={styles.showingCommentsArea}>
 
                 <>
                   {
@@ -195,11 +196,11 @@ console.log('getUserRoles, getVisitorUid', getUserRoles(), getVisitorUid(), isAd
                           {
                             !!cmt && index !== 0 && (<hr />)
                           }
-                          <div className="phen-card-tw-pt-3 phen-card-tw-pb-1 phen-card-tw-px-4 phen-card-tw-text-crowdsourced phen-card-tw-my-3 phen-card-tw-flex phen-card-tw-flex-col">
-                            <div className="phen-card-tw-flex phen-card-tw-justify-between phen-card-tw-items-center">
-                              <div className="phen-card-tw-flex phen-card-tw-items-end">
-                                <div className="phen-card-tw-font-bold"><span>{capitalizeFirstLetter(!!cmt?.['comment_name'] ?cmt?.['comment_name'] : cmt?.['user_name'] )}</span> {" "} <span className="phen-card-tw-text-grayTimeStampComment phen-card-tw-font-normal phen-card-tw-ml-2">{cmt?.['updated_humanTime']}</span></div>
-                                <div className="phen-card-tw-ml-6 phen-card-tw-pl-6 phen-card-tw-h-8 phen-card-tw-border-l-2 phen-card-tw-border-black phen-card-tw-font-normal phen-card-tw-inline"></div>
+                          <div className={styles.eachCmtWrapper}>
+                            <div className={styles.eachCmtContainer}>
+                              <div className={styles.cmtInfo}>
+                                <div className={styles.userNameWrapper}><span>{capitalizeFirstLetter(!!cmt?.['comment_name'] ?cmt?.['comment_name'] : cmt?.['user_name'] )}</span> {" "} <span className={styles.timeStampText}>{cmt?.['updated_humanTime']}</span></div>
+                                <div className={styles.verticalLine}></div>
                                 <ThumbUp
                                   cid={cmtId}
                                   gid={gid}
@@ -213,7 +214,7 @@ console.log('getUserRoles, getVisitorUid', getUserRoles(), getVisitorUid(), isAd
                                 !!cmt?.['isAuthor'] && <EditButton src={edit2} onClick={openEditCommentModalHandle(cmt)}/>
                               }
                             </div>
-                            <p className="phen-card-tw-my-2 phen-card-tw-pt-1 phen-card-tw-pb-3">{cmt?.['comment_text']}</p>
+                            <p className={styles.cmtText}>{cmt?.['comment_text']}</p>
                           </div>
                         </>
                       )
@@ -229,16 +230,7 @@ console.log('getUserRoles, getVisitorUid', getUserRoles(), getVisitorUid(), isAd
                   (isShownInputNameField) && (
                     <input
                       placeholder={lang === 'fi' ? finalTranslations?.name?.fi : finalTranslations?.name?.en}
-                      style={{
-                        fontSize: "14.1px",
-                        color: "121212",
-                        width: "100%",
-                        height: "44px",
-                        marginBottom: "5px",
-                        marginTop: "25px",
-                        border: "1px solid lightgray",
-                        paddingLeft: "11px",
-                      }}
+                      className={styles.inputStyle}
                       onChange={handleChangeInputInput}
                       value={valueInputName}
                     />
@@ -248,30 +240,23 @@ console.log('getUserRoles, getVisitorUid', getUserRoles(), getVisitorUid(), isAd
                   onChange={handleChangeInput}
                   maxLength="1000"
                   type="text"
-                  className="form-control"
+                  className={clsx(styles.textAreaStyle,"form-control")}
                   id="comment_textarea"
                   value={valueInput}
                   // placeholder={"Message *"}
                   placeholder={lang === 'fi' ? `${finalTranslations?.message?.fi} *` : `${finalTranslations?.message?.en} *`}
-                  style={{
-                    fontSize: "14.1px",
-                    color: "121212",
-                    width: "100%",
-                    height: "76px",
-                    margin: "15px 0",
-                  }}
                 />
-                <div className="phen-card-tw-flex phen-card-tw-justify-between">
+                <div className={styles.btnGroup}>
                   <div className="">
                     <button
-                      className="btn btn-sm btn-primary phen-card-tw-text-p-desc"
+                      className={clsx(styles.btnFontSize,"btn btn-sm btn-primary")}
                       onClick={commentsModalSubmit}
                     >
                       {lang === 'fi' ? finalTranslations?.submitCommentModal?.fi : finalTranslations?.submitCommentModal?.en}
                     </button>
                     <button
                       onClick={commentsModalClose}
-                      className="btn btn-sm btn-plain phen-card-tw-text-p-desc"
+                      className={clsx(styles.btnFontSize,"btn btn-sm btn-plain")}
                     >
                       {lang === 'fi' ? finalTranslations?.cancel?.fi.toUpperCase() : finalTranslations?.cancel?.en.toUpperCase()}
                     </button>

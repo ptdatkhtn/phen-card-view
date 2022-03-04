@@ -29,6 +29,7 @@ export const SliderScaleMin = styled.div`
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
+    font-size: 14px;
 `
 
 export const SliderScaleMax = styled.div`
@@ -38,6 +39,7 @@ export const SliderScaleMax = styled.div`
     overflow: hidden;
     text-overflow: ellipsis;
     text-align: right;
+    font-size: 14px;
 `
 
 export const RatingItemHeader = styled.h4`

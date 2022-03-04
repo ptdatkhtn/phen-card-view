@@ -3,6 +3,7 @@ import { getPhenomenaTypes } from '@sangre-fp/connectors/drupal-api'
 import { isEmpty } from "../../helpers/utils";
 import { finalTranslations } from "../../localTranslation";
 import { phenomenonColor } from "../../helpers/phenomenonColor";
+import styles from './RelatedPhenomena.module.css'
 const RelatedPhenomena = ({ phenomenon, gid, rid, pid, lang }) => {
   const [phenomenaTypesData, setPhenomenaTypesData] = useState(null);
   useEffect(() => {
@@ -27,8 +28,8 @@ const RelatedPhenomena = ({ phenomenon, gid, rid, pid, lang }) => {
 
   return (
         !!phenomenon && !isEmpty(phenomenon) && phenomenon["related-phenomena-data"] && phenomenon["related-phenomena-data"].length > 0 ? (
-      <div className="phen-card-tw-my-6">
-        <h2 className="phen-card-tw-text-h2-title phen-card-tw-font-bold phen-card-tw-mb-5">{lang === 'fi' ? finalTranslations?.relatedPhenomenaSection?.fi : finalTranslations?.relatedPhenomenaSection?.en}</h2>
+      <div className={styles.relatedPhenomenaWrapper}>
+        <h2 className={styles.h2Title}>{lang === 'fi' ? finalTranslations?.relatedPhenomenaSection?.fi : finalTranslations?.relatedPhenomenaSection?.en}</h2>
         <div className="">
           {phenomenon['related-phenomena-data'].map(phe => {
               phenomenaTypesData && phenomenaTypesData?.map(type => {
@@ -44,16 +45,16 @@ const RelatedPhenomena = ({ phenomenon, gid, rid, pid, lang }) => {
                   href="#abc"
                   rel="noreferrer noopener"
                   target="_blank"
-                  className="phen-card-tw-flex phen-card-tw-overflow-hidden phen-card-tw-break-words phen-card-tw-mb-2 hover:phen-card-tw-no-underline"
+                  className={styles.phenLink}
                   key={phe.id}
                 >
                   { 
-                    phenomenon?.['color'] === 'none' && <div className="phen-card-tw-w-8 phen-card-tw-h-8 phen-card-tw-text-center"><div className={`phen-card-tw-mt-0.5 icon-issue ${iconClassName}`}></div></div>
+                    phenomenon?.['color'] === 'none' && <div className={styles.phenWrapper}><div className={`icon-issue ${iconClassName}`} style={{marginTop: '1px'}}></div></div>
                   }
                   {
-                    phenomenon?.['color'] !== 'none' && <div className="phen-card-tw-w-8 phen-card-tw-h-8 phen-card-tw-text-center" ><div className={`phen-card-tw-mt-1 w_h_16 phen-card-tw-rounded-full phen-card-tw-mr-1 phen-card-tw-ml-6px`} style={{backgroundColor: `${backgroundColor}`}}></div></div>
+                    phenomenon?.['color'] !== 'none' && <div className={styles.phenWrapper} ><div className={styles.customPhen} style={{backgroundColor: `${backgroundColor}`}}></div></div>
                   } 
-                <h4 className="phen-card-tw-ml-2 phen-card-tw-mt-0.5 phen-card-tw-text-h4-title phen-card-tw-font-bold">{phe.content.title}</h4>
+                <h4 className={styles.phenName}>{phe.content.title}</h4>
                 </a>
               )
           })}

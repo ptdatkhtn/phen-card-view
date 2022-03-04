@@ -1,17 +1,17 @@
 import React from "react";
 import { isEmpty } from "../../helpers/utils";
-
+import styles from './Links.module.css'
 const Links = ({ phenomenon }) => {
   return phenomenon?.links?.length && !isEmpty(phenomenon) ? (
-    <div className="phen-card-tw-mt-6">
-      <h4 className="phen-card-tw-text-links-title phen-card-tw-font-bold phen-card-tw-mb-4">Links</h4>
+    <div className={styles.linksWrapper}>
+      <h4 className={styles.h4Title}>Links</h4>
       {phenomenon?.links?.map((link) => (
         <>
           <a
             href="https://fortune.com/2021/11/23/south-korea-culture-success-bts-kpop-netflix-kdrama-squid-game-ramon-pacheco-pardo/"
             target="_blank"
             rel="noreferrer"
-            className="phen-card-tw-text-blue phen-card-tw-text-body-text"
+            className={styles.aTagLink}
           >
             {/* https://fortune.com/2021/11/23/south-korea-culture-success-bts-kpop-netflix-kdrama-squid-game-ramon-pacheco-pardo/ */}
             {link?.url}

@@ -8,7 +8,8 @@ import DeleteConfirmationModal from '../DeleteConfirmationModal/DeleteConfirmati
 import { ACTIONS } from '../../store/Actions'
 import {DataContext} from '../../store/GlobalState'
 import {finalTranslations} from '../../localTranslation'
-
+import styles from './EditCommentModal.module.css'
+import clsx from "clsx";
 const GlobalStyle = createGlobalStyle`
   .ReactModal__Overlay--after-open {
     background-color: rgba(0,0,0,.77)!important;
@@ -194,22 +195,21 @@ const EditCommentModal = ({
           ariaHideApp={false}
         >
            <div className="modal-form-sections">
-            <div className="modal-form-section modal-form-header">
-              <h3 style={{fontSize:'22px', color:'121212', fontWeight: '700', paddingBottom: '12px'}}>{lang === 'fi' ? finalTranslations?.editCommentTitle?.fi : finalTranslations?.editCommentTitle?.en}</h3>
+            <div className="modal-form-section modal-form-header" style={{paddingBottom: '1px'}}>
+              <h3 className={styles.h3Title}>{lang === 'fi' ? finalTranslations?.editCommentTitle?.fi : finalTranslations?.editCommentTitle?.en}</h3>
             </div>
             <div className="modal-form-section" style={{paddingTop: 0}}>
               <div className="form-group">
                 <textarea
                   onChange={handleChangeInput} 
-                  maxLength="1000" type="text" className="form-control" id='comment_textarea' value={valueInput ?? ''} placeholder={'Message *'}
-                  style={{fontSize:'14.1px', color:'121212', width: '100%', height: 'fit-content', minHeight: '360px'}}
+                  maxLength="1000" type="text" className={clsx(styles.textAreaStyle,"form-control")} id='comment_textarea' value={valueInput ?? ''} placeholder={'Message *'}
                   />
-                  <label htmlFor="example1" style={{fontSize:'13px', color:'#000', marginBottom: 0}}>{remainingChars} {lang === 'fi' ? finalTranslations?.charactersRemainingText?.fi : finalTranslations?.charactersRemainingText?.en}</label>
+                  <label htmlFor="example1" className={styles.labelTag}>{remainingChars} {lang === 'fi' ? finalTranslations?.charactersRemainingText?.fi : finalTranslations?.charactersRemainingText?.en}</label>
               </div>
             </div>
     
           </div>
-          <div className="modal-form-section modal-form-actions" style={{display: 'flex', justifyContent: 'space-between', paddingTop: 0}}>
+          <div className={clsx(styles.modalFormActionsWrapper, "modal-form-section modal-form-actions")}>
             <div>
               <DeleteConfirmationModal 
                 handleCloseConfirmModal={handleCloseConfirmModal}
@@ -219,11 +219,11 @@ const EditCommentModal = ({
                 handleCloseModal={handleCloseModal}
                 radarId={radarId}
                 />
-              <button type="button" className="btn btn-sm btn-plain-gray" onClick={handleRemoveComment} style={{paddingLeft: 0, fontSize: '16.1px', fontWeight: 540}}>{lang === 'fi' ? finalTranslations?.removeComment?.fi : finalTranslations?.removeComment?.en}</button>
+              <button type="button" className={clsx("btn btn-sm btn-plain-gray", styles.btnStyle, styles.pl_0)} onClick={handleRemoveComment}>{lang === 'fi' ? finalTranslations?.removeComment?.fi : finalTranslations?.removeComment?.en}</button>
             </div>
             <div>
-              <button type="button" className="btn btn-sm btn-plain-gray" onClick={handleCloseModal} style={{fontSize: '16.1px', fontWeight: 540}}>{lang === 'fi' ? finalTranslations?.cancel?.fi : finalTranslations?.cancel?.en}</button>
-              <button type="button" className="btn btn-sm btn-primary" onClick={handleSave} style={{fontSize: '16.1px', fontWeight: 540}}>{lang === 'fi' ? finalTranslations?.save?.fi : finalTranslations?.save?.en}</button>
+              <button type="button" className={clsx("btn btn-sm btn-plain-gray", styles.btnStyle)} onClick={handleCloseModal}>{lang === 'fi' ? finalTranslations?.cancel?.fi : finalTranslations?.cancel?.en}</button>
+              <button type="button" className={clsx("btn btn-sm btn-primary", styles.btnStyle)} onClick={handleSave}>{lang === 'fi' ? finalTranslations?.save?.fi : finalTranslations?.save?.en}</button>
             </div>
           </div>
         </Modal>

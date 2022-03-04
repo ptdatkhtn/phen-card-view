@@ -1,15 +1,15 @@
 .phen-card-app {
-    @tailwind base;
-    @tailwind components;
-    @tailwind utilities;
-    
     color: #333;
     font-family: 'L10';
 }
 
+.phen-card-app p {
+    margin-bottom: 0;
+}
 .phen-card-app .container, .phen-card-app .container-fullwidth,
 .phen-card-app .container-fullwidth {
-    @apply phen-card-tw-font-L10;
+    background-color: white;
+    color: black;
     min-width: unset;
     max-width: unset;
 
@@ -98,4 +98,8 @@
 .phen-card-app .w_h_16 {
     width: 16px;
     height:16px;
+}
+
+.phen-card-app .p_4 {
+    padding: 14px;
 }

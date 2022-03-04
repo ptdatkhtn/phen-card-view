@@ -3,7 +3,6 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "@craco/craco": "^6.4.3",
     "@fortawesome/fontawesome-svg-core": "^1.2.36",
     "@fortawesome/free-solid-svg-icons": "^5.15.4",
     "@fortawesome/react-fontawesome": "^0.1.16",
@@ -14,7 +13,6 @@
     "@testing-library/react": "^11.1.0",
     "@testing-library/user-event": "^12.1.10",
     "clsx": "^1.1.1",
-    "postcss-nested": "^5.0.6",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "react-responsive-carousel": "^3.2.22",
@@ -25,11 +23,11 @@
     "web-vitals": "^1.0.1"
   },
   "scripts": {
-    "start": "sh -ac '. ./.env.dev; PORT=3009 craco start'",
-    "start-local": "sh -ac '. ./.env.local-dev; PORT=3009 craco start'",
-    "build": "sh -ac '. ./.env.deployment; craco build'",
-    "test": "craco test",
-    "eject": "craco eject",
+    "start": "sh -ac '. ./.env.dev; PORT=3009 react-scripts start'",
+    "start-local": "sh -ac '. ./.env.local-dev; PORT=3009 react-scripts start'",
+    "build": "sh -ac '. ./.env.deployment; react-scripts build'",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject",
     "storybook": "start-storybook -p 6006 -s public",
     "build-storybook": "build-storybook -s public"
   },
@@ -43,10 +41,5 @@
     ">0.2%",
     "not dead",
     "not op_mini all"
-  ],
-  "devDependencies": {
-    "autoprefixer": "9",
-    "postcss": "7",
-    "tailwindcss": "npm:@tailwindcss/postcss7-compat"
-  }
+  ]
 }

@@ -10,7 +10,8 @@ import {getPhenomena} from '../../helpers/phenomenonFetcher'
 import { getUserId } from '@sangre-fp/connectors/session'
 import { ACTIONS } from '../../store/Actions'
 import {DataContext} from '../../store/GlobalState'
-
+import clsx from "clsx";
+import styles from './DeleteConfirmationModal.module.css'
 const DeleteConfirmationModal = ({
   isConfirmModalOpened,
   handleCloseConfirmModal,
@@ -185,22 +186,20 @@ const DeleteConfirmationModal = ({
       ariaHideApp={false}
       style={paddingModalStyles}
     >
-      <div className="confirmation-modal-content phen-card-tw-pt-4 phen-card-tw-pb-4" style={{display: 'flex', justifyContent: 'center', flexDirection: 'column', alignItems:'center'}}>
-        <h3 className="confirmation-modal-title" style={{fontSize:'20px', fontWeight: 'bold', paddingTop: '40px', paddingBottom: '25px'}}>
+      <div className={clsx(styles.modalWrapper, "confirmation-modal-content")}>
+        <h3 className={clsx(styles.h3Title, "confirmation-modal-title")}>
         {lang === 'fi' ? finalTranslations?.removeCommentConfirmation?.fi : finalTranslations?.removeCommentConfirmation?.en}
         </h3>
-        <div className="confirmation-modal-actions" style={{paddingBottom: '39px'}}>
+        <div className={clsx(styles.pb_39, "confirmation-modal-actions")}>
           <button
             onClick={handleCancelRemoveBtn}
-            className="btn btn-sm btn-plain-gray"
-            style={{fontSize: '16.1px', fontWeight: 540}}
+            className={clsx(styles.btnStyle, "btn btn-sm btn-plain-gray")}
           >
            {lang === 'fi' ? finalTranslations?.removeCommentNoOption?.fi : finalTranslations?.removeCommentNoOption?.en}
           </button>
           <button
             onClick={handleYesRemoveCmtBtn}
-            className="btn btn-sm btn-primary"
-            style={{fontSize: '16.1px', fontWeight: 540}}
+            className={clsx(styles.btnStyle, "btn btn-sm btn-primary")}
             // onClick={deletePublicLink}
           >
            {lang === 'fi' ? finalTranslations?.removeCommentYesOption?.fi : finalTranslations?.removeCommentYesOption?.en}

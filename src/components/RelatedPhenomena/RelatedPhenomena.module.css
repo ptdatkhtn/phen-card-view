@@ -1,0 +1,42 @@
+.relatedPhenomenaWrapper {
+    margin: 21px 0;
+}
+
+.h2Title {
+    font-size: 26px;
+    font-weight: 700;
+    margin-bottom: 18px;
+}
+
+.phenLink {
+    display: flex;
+    overflow: hidden;
+    overflow-wrap: break-word;
+    margin-bottom: 7px;
+}
+
+.phenLink:hover {
+    text-decoration: none;
+}
+
+.phenWrapper {
+    width: 28px;
+    height: 28px;
+    text-align: center;
+}
+
+.customPhen {
+    margin-top: 3px;
+    width: 16px;
+    height: 16px;
+    border-radius: 9999px;
+    margin-right: 3px;
+    margin-left: 6px;
+}
+
+.phenName {
+    margin-left: 7px;
+    margin-top: 1px;
+    font-size: 15px;
+    font-weight: 700;
+}

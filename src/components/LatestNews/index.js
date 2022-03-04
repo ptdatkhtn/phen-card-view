@@ -2,29 +2,31 @@ import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faClock } from "@fortawesome/free-solid-svg-icons";
 import { finalTranslations } from "../../localTranslation";
+import styles from './LatestNews.module.css'
+import clsx from "clsx";
 const LatestNews = ({lang}) => {
     return (
-        <div className="phen-card-tw-mt-6">
-            <h2 className="phen-card-tw-text-h2-title phen-card-tw-font-bold phen-card-tw-mb-4">{lang === 'fi' ? finalTranslations?.latestNewsTitle?.fi : finalTranslations?.latestNewsTitle?.en}</h2>
-            <ul className="">
-                <li className="phen-card-tw-mb-6">
+        <div className={styles.latestNewsWrapper}>
+            <h2 className={styles.h2Title}>{lang === 'fi' ? finalTranslations?.latestNewsTitle?.fi : finalTranslations?.latestNewsTitle?.en}</h2>
+            <ul className={styles.ulTag}>
+                <li className={styles.liTag}>
                     <a
-                        className="phen-card-tw-flex hover:phen-card-tw-no-underline"
+                        className={styles.newsLink}
                         rel="noreferrer noopener"
                         target="_blank"
                         href="https://www.globalbankingandfinance.com/category/news/updated-outcome-and-treatment-benefit-data-from-mindact-study-reinforce-real-world-value-of-mammaprint-for-clinical-low-risk-breast-cancer-patients-at-sabcs-2020/"
                     >
-                        <span className="af-custom-clock-o phen-card-tw-text-clock-icon phen-card-tw-mr-3 phen-card-tw-mt-3px"></span>
+                        <span className={clsx(styles.clockIcon, 'af-custom-clock-o')}></span>
                         <div>
-                            <p className="phen-card-tw-text-meta phen-card-tw-text-grayText">
+                            <p className={styles.timeStampText}>
                                 Business Wire 11.12.2020 23:04
                             </p>
-                            <h4 className="phen-card-tw-text-body-text phen-card-tw-font-bold phen-card-tw-text-blackText hover:phen-card-tw-underline phen-card-tw-mb-4px">
+                            <h4 className={styles.h4Title}>
                                 NEWSUpdated Outcome and Treatment Benefit Data from MINDACT
                                 Study Reinforce Real-World Value of MammaPrint® for Clinical Low
                                 Risk Breast Cancer Patients at SABCS 2020
                             </h4>
-                            <p className="phen-card-tw-text-p-desc phen-card-tw-text-blackText phen-card-tw-mb-4px">
+                            <p className={styles.bodyText}>
                                 Agendia, Inc., a world leader in precision oncology for breast
                                 cancer, today announced that additional data from its
                                 groundbreaking MINDACT study will be highlighted in an oral
@@ -36,24 +38,24 @@ const LatestNews = ({lang}) => {
                         </div>
                     </a>
                 </li>
-                <li className="phen-card-tw-mb-6">
+                <li className={styles.liTag}>
                     <a
-                        className="phen-card-tw-flex hover:phen-card-tw-no-underline"
+                        className={styles.newsLink}
                         rel="noreferrer noopener"
                         target="_blank"
                         href="https://www.globalbankingandfinance.com/category/news/updated-outcome-and-treatment-benefit-data-from-mindact-study-reinforce-real-world-value-of-mammaprint-for-clinical-low-risk-breast-cancer-patients-at-sabcs-2020/"
                     >
-                        <span className="af-custom-clock-o phen-card-tw-text-clock-icon phen-card-tw-mr-3 phen-card-tw-mt-3px"></span>
+                        <span className={clsx(styles.clockIcon, 'af-custom-clock-o')}></span>
                         <div>
-                            <p className="phen-card-tw-text-meta phen-card-tw-text-grayText">
+                            <p className={styles.timeStampText}>
                                 Business Wire 11.12.2020 23:04
                             </p>
-                            <h4 className="phen-card-tw-text-body-text phen-card-tw-font-bold phen-card-tw-text-blackText hover:phen-card-tw-underline phen-card-tw-mb-4px">
+                            <h4 className={styles.h4Title}>
                                 NEWSUpdated Outcome and Treatment Benefit Data from MINDACT
                                 Study Reinforce Real-World Value of MammaPrint® for Clinical Low
                                 Risk Breast Cancer Patients at SABCS 2020
                             </h4>
-                            <p className="phen-card-tw-text-p-desc phen-card-tw-text-blackText  phen-card-tw-mb-4px">
+                            <p className={styles.bodyText}>
                                 Agendia, Inc., a world leader in precision oncology for breast
                                 cancer, today announced that additional data from its
                                 groundbreaking MINDACT study will be highlighted in an oral
@@ -65,24 +67,24 @@ const LatestNews = ({lang}) => {
                         </div>
                     </a>
                 </li>
-                <li className="phen-card-tw-mb-6">
+                <li className={styles.liTag}>
                     <a
-                        className="phen-card-tw-flex hover:phen-card-tw-no-underline"
+                        className={styles.newsLink}
                         rel="noreferrer noopener"
                         target="_blank"
                         href="https://www.globalbankingandfinance.com/category/news/updated-outcome-and-treatment-benefit-data-from-mindact-study-reinforce-real-world-value-of-mammaprint-for-clinical-low-risk-breast-cancer-patients-at-sabcs-2020/"
                     >
-                        <span className="af-custom-clock-o phen-card-tw-text-clock-icon phen-card-tw-mr-3 phen-card-tw-mt-3px"></span>
+                        <span className={clsx(styles.clockIcon, 'af-custom-clock-o')}></span>
                         <div>
-                            <p className="phen-card-tw-text-meta phen-card-tw-text-grayText">
+                            <p className={styles.timeStampText}>
                                 Business Wire 11.12.2020 23:04
                             </p>
-                            <h4 className="phen-card-tw-text-body-text phen-card-tw-font-bold phen-card-tw-text-blackText hover:phen-card-tw-underline phen-card-tw-mb-4px">
+                            <h4 className={styles.h4Title}>
                                 NEWSUpdated Outcome and Treatment Benefit Data from MINDACT
                                 Study Reinforce Real-World Value of MammaPrint® for Clinical Low
                                 Risk Breast Cancer Patients at SABCS 2020
                             </h4>
-                            <p className="phen-card-tw-text-p-desc phen-card-tw-text-blackText phen-card-tw-mb-4px">
+                            <p className={styles.bodyText}>
                                 Agendia, Inc., a world leader in precision oncology for breast
                                 cancer, today announced that additional data from its
                                 groundbreaking MINDACT study will be highlighted in an oral
@@ -94,24 +96,24 @@ const LatestNews = ({lang}) => {
                         </div>
                     </a>
                 </li>
-                <li className="phen-card-tw-mb-6">
+                <li className={styles.liTag}>
                     <a
-                        className="phen-card-tw-flex hover:phen-card-tw-no-underline"
+                        className={styles.newsLink}
                         rel="noreferrer noopener"
                         target="_blank"
                         href="https://www.globalbankingandfinance.com/category/news/updated-outcome-and-treatment-benefit-data-from-mindact-study-reinforce-real-world-value-of-mammaprint-for-clinical-low-risk-breast-cancer-patients-at-sabcs-2020/"
                     >
-                        <span className="af-custom-clock-o phen-card-tw-text-clock-icon phen-card-tw-mr-3 phen-card-tw-mt-3px"></span>
+                        <span className={clsx(styles.clockIcon, 'af-custom-clock-o')}></span>
                         <div>
-                            <p className="phen-card-tw-text-meta phen-card-tw-text-grayText">
+                            <p className={styles.timeStampText}>
                                 Business Wire 11.12.2020 23:04
                             </p>
-                            <h4 className="phen-card-tw-text-body-text phen-card-tw-font-bold phen-card-tw-text-blackText hover:phen-card-tw-underline phen-card-tw-mb-4px">
+                            <h4 className={styles.h4Title}>
                                 NEWSUpdated Outcome and Treatment Benefit Data from MINDACT
                                 Study Reinforce Real-World Value of MammaPrint® for Clinical Low
                                 Risk Breast Cancer Patients at SABCS 2020
                             </h4>
-                            <p className="phen-card-tw-text-p-desc phen-card-tw-text-blackText phen-card-tw-mb-4px">
+                            <p className={styles.bodyText}>
                                 Agendia, Inc., a world leader in precision oncology for breast
                                 cancer, today announced that additional data from its
                                 groundbreaking MINDACT study will be highlighted in an oral

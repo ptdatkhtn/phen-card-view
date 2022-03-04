@@ -1,0 +1,61 @@
+.commentsWrapper {
+    margin-top: 21px !important;
+}
+
+.h3Title {
+    font-size: 20px;
+    font-weight: 700;
+    margin-bottom: 10px !important;
+}
+
+.sectionWrapper {
+    background-color: #e8ebeb;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-top: 12.5px;
+    padding-bottom: 12.5px;
+    padding-right: 10px;
+    padding-left: 14px;
+    border-color: white;
+    border-style: solid;
+    border-bottom-width: 2px;
+    font-size: 12px;
+}
+
+.sectionTitle {
+    font-weight: 700;
+    font-size: 13px;
+}
+
+.commentsViewText {
+    color: #006998;
+    font-weight: 500;
+    cursor: pointer;
+    display:flex;
+    align-items: center;
+    padding-right: 7px;
+}
+
+.chatIcon {
+    font-size: 14.4px;
+    margin-right: 10px;
+    margin-top: 3.5px !important;
+}
+
+.userCommentArea {
+    padding-top: 10px;
+    padding-left: 14px;
+    padding-right: 14px;
+    font-size: 12px;
+}
+
+.userNameTitle {
+    font-weight: 700;
+}
+
+.cmtTimeStamp {
+    color: #666666;
+    font-weight: normal;
+    margin-left: 5px !important;
+}

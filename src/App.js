@@ -91,7 +91,7 @@ console.log('phenomenonData', phenomenonData)
   }, [phenomenonData, phenomenonTypeData, relatedPhenomenaData])
   console.log('completedPhenomenon', completedPhenomenon)
   return (
-    <div className="phen-card-tw-bg-white phen-card-tw-text-black container phen-card-tw-p-4 ">
+    <div className="container p_4">
       <CardHeader gid={gid} rid={rid} pid={pid} phenomenon={completedPhenomenon} lang={langRadar}/>
       <YoutubeImageEmbed embedId="rokGy0huYEA" phenomenon={completedPhenomenon} />
       <LatestNewsCarousel lang={langRadar}/>

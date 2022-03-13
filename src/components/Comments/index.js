@@ -45,7 +45,7 @@ const Comments = ({gid, rid, pid, lang, phenomenon}) => {
       return cmtTemp
     }).filter((cmt) => {
       console.log('checkccking', cmt)
-      return String(cmt?.entity_uri?.split('/')[6]) === 'opportunities'
+      return String(cmt?.entity_uri?.split('/')[7]) === 'opportunities'
     })
     console.log(99, a)
     return !!a?.length && a?.sort(function(x, y){
@@ -61,7 +61,7 @@ const Comments = ({gid, rid, pid, lang, phenomenon}) => {
       cmtTemp['updated_humanTime'] = convert2HumunDate[2] + '.' + mm + '.' + convert2HumunDate[3] + ' ' + convert2HumunDate[4]
       return cmtTemp
     }).filter((cmt) => {
-      return String(cmt?.entity_uri?.split('/')[6]) === 'threats'
+      return String(cmt?.entity_uri?.split('/')[7]) === 'threats'
     })
     return !!a?.length && a?.sort(function(x, y){
       return x.created_timestamp - y.created_timestamp;
@@ -76,7 +76,7 @@ const Comments = ({gid, rid, pid, lang, phenomenon}) => {
       cmtTemp['updated_humanTime'] = convert2HumunDate[2] + '.' + mm + '.' + convert2HumunDate[3] + ' ' + convert2HumunDate[4]
       return cmtTemp
     }).filter((cmt) => {
-      return String(cmt?.entity_uri?.split('/')[6]) === 'actions'
+      return String(cmt?.entity_uri?.split('/')[7]) === 'actions'
     })
     return !!a?.length && a?.sort(function(x, y){
       return x.created_timestamp - y.created_timestamp;
@@ -140,9 +140,9 @@ const Comments = ({gid, rid, pid, lang, phenomenon}) => {
                 threatsCmts && !!threatsCmts?.length && (
                   <div className={styles.userCommentArea}>
                     <p className={styles.userNameTitle}>
-                      {capitalizeFirstLetter(!!opportunitiesCmts[opportunitiesCmts?.length - 1]?.['comment_name'] ? 
-                        opportunitiesCmts[opportunitiesCmts?.length - 1]?.['comment_name'] :
-                        opportunitiesCmts[opportunitiesCmts?.length - 1]?.['user_name'])} 
+                      {capitalizeFirstLetter(!!threatsCmts[threatsCmts?.length - 1]?.['comment_name'] ? 
+                        threatsCmts[threatsCmts?.length - 1]?.['comment_name'] :
+                        threatsCmts[threatsCmts?.length - 1]?.['user_name'])} 
                         {" "} 
                         <span className={styles.cmtTimeStamp}>{threatsCmts[threatsCmts?.length - 1]['updated_humanTime']}</span> </p>
                     <p className="pt_4 pb_4 ">{threatsCmts[threatsCmts?.length - 1]?.['comment_text']}</p>
@@ -171,9 +171,9 @@ const Comments = ({gid, rid, pid, lang, phenomenon}) => {
                 actionsCmts && !!actionsCmts?.length && (
                   <div className={styles.userCommentArea}>
                     <p className={styles.userNameTitle}>
-                      {capitalizeFirstLetter(!!opportunitiesCmts[opportunitiesCmts?.length - 1]?.['comment_name'] ? 
-                        opportunitiesCmts[opportunitiesCmts?.length - 1]?.['comment_name'] :
-                        opportunitiesCmts[opportunitiesCmts?.length - 1]?.['user_name'])} 
+                      {capitalizeFirstLetter(!!actionsCmts[actionsCmts?.length - 1]?.['comment_name'] ? 
+                        actionsCmts[actionsCmts?.length - 1]?.['comment_name'] :
+                        actionsCmts[actionsCmts?.length - 1]?.['user_name'])} 
                         {" "} 
                         <span className={styles.cmtTimeStamp}>{actionsCmts[actionsCmts?.length - 1]['updated_humanTime']}</span> </p>
                     <p className="pt_4 pb_4 ">{actionsCmts[actionsCmts?.length - 1]?.['comment_text']}</p>

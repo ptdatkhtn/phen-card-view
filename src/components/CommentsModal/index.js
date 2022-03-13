@@ -190,7 +190,7 @@ console.log('getUserRoles, getVisitorUid', getUserRoles(), getVisitorUid(), isAd
                   {
                     !!cmts?.length && cmts?.map((cmt, index) => {
                       console.log(999,cmt)
-                      const cmtId = cmt?.entity_uri.split('/')[7]
+                      const cmtId = cmt?.entity_uri.split('/')[8]
                       return (
                         <>
                           {

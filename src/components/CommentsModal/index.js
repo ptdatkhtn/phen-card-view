@@ -247,6 +247,16 @@ console.log('getUserRoles, getVisitorUid', getUserRoles(), getVisitorUid(), isAd
                   placeholder={lang === 'fi' ? `${finalTranslations?.message?.fi} *` : `${finalTranslations?.message?.en} *`}
                 />
                 <div className={styles.btnGroup}>
+                <label
+                    htmlFor="example1"
+                    style={{
+                      fontSize: "12.5px",
+                      color: "#000",
+                      marginBottom: 0,
+                    }}
+                  >
+                    {remainingChars} {lang === 'fi' ? finalTranslations?.charactersRemainingText?.fi : finalTranslations?.charactersRemainingText?.en}
+                  </label>
                   <div className="">
                     <button
                       className={clsx(styles.btnFontSize,"btn btn-sm btn-primary")}
@@ -261,16 +271,7 @@ console.log('getUserRoles, getVisitorUid', getUserRoles(), getVisitorUid(), isAd
                       {lang === 'fi' ? finalTranslations?.cancel?.fi.toUpperCase() : finalTranslations?.cancel?.en.toUpperCase()}
                     </button>
                   </div>
-                  <label
-                    htmlFor="example1"
-                    style={{
-                      fontSize: "12.5px",
-                      color: "#000",
-                      marginBottom: 0,
-                    }}
-                  >
-                    {remainingChars} {lang === 'fi' ? finalTranslations?.charactersRemainingText?.fi : finalTranslations?.charactersRemainingText?.en}
-                  </label>
+                  
                 </div>
               </div>
             </div>
